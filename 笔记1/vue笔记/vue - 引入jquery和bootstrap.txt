@@ -1,0 +1,25 @@
+安装jquery
+
+1.引入jquery
+	npm install jquery --save-dev 
+
+2.在webpack.base.conf.js中添加如下内容
+	（1）var webpack = require('webpack')
+	（2）/ 增加一个plugins
+		plugins: [
+  			new webpack.ProvidePlugin({
+   			     $: "jquery",
+   			    jQuery: "jquery"
+ 			 })
+		],
+
+3.在main.js中添加内容
+	import $ from 'jquery'
+
+
+安装bootstrap
+
+1.npm install bootstrap --save-dev
+2.在main.js中添加如下内容
+	import 'bootstrap/dist/css/bootstrap.min.css'
+	import 'bootstrap/dist/js/bootstrap.min'

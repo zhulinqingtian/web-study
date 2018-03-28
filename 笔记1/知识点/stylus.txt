@@ -1,0 +1,187 @@
+
+1.stylus入门使用方法
+	一个CSS的预处理框架，主要用来个node项目进行CSS预处理支持
+	默认使用.styl作为文件扩展名，支持多样性的css语法
+
+	安装
+		全局安装  npm install stylus -g
+
+	生成css
+		stylusExample/src  
+		src:专门存放stylus文件
+
+		执行stylus --compress src/  若输出compiled src/example.css 则表示成功
+
+	css 转换为styl文件  	
+		stylus -css css/example.css css/out.css
+
+	输出基本名一直的styl文件  
+		stylus -css test.css
+
+2.grunt生成
+	(1)stylusExample下创建两个grunt必备的文件
+		package.json  保存项目元数据
+		Gruntfile.js  用于配置或定义任务、加载 Grunt 插件
+
+	package.json 内容
+		{
+  			"name": "test",
+  			"version": "1.0.0",
+  			"description": "测试的例子",
+  			"repository": {
+    			"type": "git",
+    			"url": ""
+  			}
+		}
+
+	(2)安装必备插件。
+		这些插件让stylus文件变更了自动生成，生成到相对应的文件目录中。如果报错你需要在命令行前面加上sudo，给它最大的执行权限
+	npm install grunt --save-dev 
+	npm install grunt-contrib-watch --save-dev 							监视文件变动，做出相应动作。npm>> 
+	npm install grunt-contrib-stylus --save-dev 						stylus编写styl输出css npm>>
+
+	插件执行完毕之后 package.json
+		{
+  			"name": "test",
+  			"version": "1.0.0",
+  			"description": "测试的例子",
+  			"repository": {
+    			"type": "git",
+    			"url": ""
+  			},
+  			"devDependencies": {
+    			"grunt": "^0.4.5",
+    			"grunt-contrib-stylus": "^0.21.0",
+    			"grunt-contrib-watch": "^0.6.1"
+  			}
+		}
+
+	(3)在Gruntfile.js里面写你的执行任务
+		// 告诉grunt我们将使用插件
+    		grunt.loadNpmTasks('grunt-contrib-watch');
+    		grunt.loadNpmTasks('grunt-contrib-stylus');
+    	// 告诉grunt当我们在终端中输入grunt时需要做些什么
+    		grunt.registerTask('default', ['watch']);
+
+   3.stylus应用
+   	 	a.nibStylus插件   @import 'nib'
+
+   	 	b.Nesting(嵌套) 
+   	 		header
+    			#logo
+        			border:1px solid red
+
+        c.Flexible syntax(灵活的用法)
+
+        d.内置的unit() ：把单位都变成px.赋值在每个参数上，可以无视单位换算
+        	例如：
+        		add（a,b=a）
+        			a=unit(a,px)
+        			b=unit(b,px)  
+
+        		add(15%,10deg)  //=>25
+        e.多个返回值
+        	通过unit()把单位都变成px赋值在每个参数上
+        	例如：
+        		size()
+        			15px 10px
+
+        		size()[0]  //15px 第一个返回值
+
+        f.变量
+        	font-size=14px
+        	body
+        		font font-size Arial  
+
+        g.变量放在属性中
+        	#box
+        		position:absolute
+        		top:100px
+        		left:50%
+        		width:w=200px
+        		margin-left:-(w/2)  //=》-100px
+
+        h.块属性访问引用
+        	#box
+        		position:absolute
+        		width:200px
+        		margin-left:-(@width/2)  //=>1-100px
+
+        i.属性有条件地定义属性
+        	position()
+        		position:arguments
+        		z-index:1 unless @z-index    在之前没有指定z-index时使用
+
+        j.向上冒泡(就近原则)
+        	使用变量就近原则
+
+        k.Iteration(迭代)
+        	table 
+        		for row in 1 2 3 4
+        			tr:nth-child({row})
+        				height:10px*row
+
+        	table tr:nth-child(1){
+        		height:10px;
+        	}
+        	table tr:nth-child(2){
+        		height:20px;
+        	}
+        	table tr:nth-child(3){
+        		height:30px;
+        	}
+        	table tr:nth-child(4){
+        		height:40px;
+        	}
+
+        l.Interpolation 插值
+        	vendors=webkit moz o ms offcial
+
+        	border-radius()
+        		for vendor in vendors
+        			if vendor==offcial
+        				border-radius:arguments
+        			else
+        				-{vendor}-border-radius:arguments
+
+        	#content
+        		border-radius:5px
+        	编译结果
+        		#content {
+  					-webkit-border-radius: 5px;
+  					-moz-border-radius: 5px;
+  					-o-border-radius: 5px;
+  					-ms-border-radius: 5px;
+  					border-radius: 5px;
+				}
+
+		m.@import
+			没有.css扩展则被认为是stylus文件
+			工作原理：便利任意目录，检查是否有该文件
+					  也支持索引形式
+
+		n.@font-face
+			@font-face
+				font-family Geo
+				font-style  normal
+				src url(fonts/geo_sans_light/GensansLight.ttf)
+
+			编译结果
+				@font-face{
+					font-family:Geo;
+					font-style:normal;
+					src:url("fonts/geo_sans_light/GensansLight.ttf")
+				}
+
+		o.@keyframes
+		p.css字面量  固定值
+			@css{
+				body{
+					font:14px;
+				}
+			}
+
+			编译结果
+				body{
+					font:14px;
+				}

@@ -1,0 +1,175 @@
+CSS3的好处
+    1.以前用css2不能完成，却用javascript的动画，样式等，现在用CSS3可以简单快捷的实现
+    2.浏览器加载比较快
+    3.这些CSS3属性能被大部分的现代浏览器支持
+
+
+border-image 边框图片：border-image:url("图片路径") 大小 方式
+    注意：1.在使用border-image之前，需要对元素设置边框（border）;
+          2.大小是不带单位
+          3.方式：stretch:拉伸，要多宽有多宽
+                  round：圆满平铺，中间的图片重复，从两端向中间挤
+                  repeat：平铺，从中间向两端重复排列
+
+
+
+box-shadow 盒子阴影（text-shadow 文字阴影）：box-shadow:X轴偏移 Y轴偏移 光晕大小 扩展半径 颜色  阴影方式
+        X轴偏移：可以有正值和负值，正值是向右偏移，负值是向左偏移
+        Y轴偏移：可以有正值和负值，正值是向下偏移，负值是向上偏移 
+        光晕大小：可选值，只有正值，正值越大，模糊效果越强
+        扩展半径：可选值，可以有正值和负值，正值越大，阴影的扩展越大，负值越小，阴影缩小
+        阴影方式：外阴影，不写的情况下，默认是外阴影，内阴影，用inset;只能放在第一个或者最后一个才生效
+	多个阴影的写法：用逗号分开
+          box-shadow:X轴偏移 Y轴偏移 光晕大小 颜色  阴影方式，X轴偏移 Y轴偏移 光晕大小 颜色  阴影方式  
+
+
+background 背景
+       线性渐变：
+	   background:linear-gradient(方向,起始颜色 百分比,...最后颜色百分比)
+               方向：to right,to right top,
+               颜色：英文单词，十六进制，rgba
+               百分比：后面颜色百分比一定要大于前面颜色的百分比，否则将没有过度效果
+       径向渐变：
+           background:rodial-gradient(方向，形状 大小，起始颜色 百分比，...，最后颜色 百分比)
+		方向：1.at right top 2.用百分比，第一个值是水平方向的，第二个值是垂直方向，在使用大小的时候，一定要用百分比定位
+                形状：默认是圆形，ellipse定义椭圆
+                大小：1.closest-side指定径向渐变的半径长度为从圆心到离圆心最近的边；
+    		      2.farthest-side指定径向渐变的半径长度为从圆心到离圆心最远的边；
+    		      3.closest-corner指定径向渐变的半径长度为从圆心到离圆心最近的角；
+    		      4.farthest-corner指定径向渐变的半径长度为从圆心到离圆心最远的角；
+               颜色：英文单词，十六进制，rgba
+               百分比：后面颜色百分比一定要大于前面颜色的百分比，否则将没有过度效果
+       背景大小：
+	  background-size:百分比/数值/cover/contain
+              百分比：是元素大小的百分比，比不是图片大小百分比，如果写一个值，以宽为准的等比例缩放，如果是两个值，那个第一值是宽，第二值是高
+              数值：如果是一个值呢，以宽为准的等比例缩放，如果是两个值，那个第一值是宽，第二值是高
+              cover:让背景充满整体区域，图片不会变形，溢出的图片的隐藏
+              contain:图片不变形，贴紧一边，直到遇到另一边，就停止放大
+       
+       背景固定：background-attachent：fixed;
+           背景相对于浏览器窗口固定，不会随着滚动条的滚动而滚动
+       
+       背景起始位置：
+           background-origin:border-box/padding-box/content-box
+                border-box:从边框开始（左上角）
+                padding-box:从内边距开始
+                content-box：从内容区域开始
+
+       背景的裁剪：
+           background-cilp:border-box/padding-box/content-box
+                border-box:边框之外的背景被裁减
+                padding-box:内边距之外的背景被裁减
+                content-box：内容区域外的背景被裁减
+           注意：这个的裁剪与背景起始位置有关系
+
+      多背景：用逗号分开，只能用简写的方法，background：url() no-repeat 定位，url() no-repeat 定位
+
+
+
+变形：transform:变形();
+     旋转：transform:rotate(度数【数值+deg】)
+	   transform:rotateX(度数【数值+deg】) 沿着X轴旋转
+           transform:rotateY(度数【数值+deg】) 沿着Y轴旋转
+           transform-origin设置旋转的中心位置：
+               语法：transform-origin：X轴 Y轴 Z轴
+                     X轴的值：left center right length %
+                     Y轴的值：top center bottom length %
+                     Z轴的值：length
+     扭曲：transform:skew(度数【数值+deg】)
+	   transform:skewX(度数【数值+deg】) 沿着X轴扭曲
+           transform:skewY(度数【数值+deg】) 沿着Y轴扭曲
+
+     位移：transform:translate(x,y) x,y都是数值，像素计
+           transform:translateX(值) X轴位移量
+           transform:translateX(值) Y轴的位移量
+
+     缩放：transform:scale(数值) 数值是指放大和缩小的倍数，1代表正常大小，小于1代表缩小，大于1代表放大
+           transform:scaleX(数值)
+           transform:scaleY(数值)
+      
+	transform-style:flat/preserve-3d
+            flat:默认值，代表呈现2D平面效果
+            preserve-3d：呈现3D空间效果
+
+       简写：transform:perspective(像素) rotateX（度数)   透视效果
+
+透视：perspective：数值  定义透视位置
+         数值为0；代表无透视效果
+         数值大于0：数值越大，代表眼睛离面的距离越远（物体的前面和后面的距离越近）
+         数值大于0：数值越小，代表眼睛离面的距离越近（物体的前面和后面的距离越远）
+         数值不能为负数，负数试为0
+
+
+过渡：transition:属性 执行时间 过渡方式 延迟时间
+      transition-property:all   all代表最终的所有属性
+      transition-duration：2s  过渡时间，以s（秒）为单位
+      transition-delay：2s   延迟时间（过渡开始之前的等待时间）
+      transition-timing-funciton:ease/ease-in/ease-in-out/ease-out/linear  过渡方式
+      
+
+
+动画：animation：动画名 动画的执行时间 动画的执行函数 延迟时间 动画的播放次数 定义动画的方向
+      animation-name:动画名
+      animation-duration 动画执行的时间
+      animation-delay 动画执行前的延迟时间
+      animation-timing-function：ease/ease-in/ease-in-out/ease-out/linear 定义动画的播放方式
+      animation-direction:nomorl/alternate  定义动画方向  alternate代表反向也有动画
+      animation-iteration-count:numble/infinite  定义动画播放的次数 infinite无限次循
+   环播放
+      animation-play-state:running/paused  running默认值代表运行  paused代表暂停，paused之后再次开始播放，是从暂停的地方开始，并非重新开始
+      animation-fill-mode:forwards  定义动画停在最后一个动作上
+    
+ 
+    定义动画：@keyframes  动画名{定义节点}
+    定义节点：1.from{} to{}
+             2. 百分比（从0%到100%）
+
+
+CSS3属性选择器：选择器[属性 通配符 属性值]{}
+      选择器[属性^=val]{}  给选择器中特定属性的属性值以val开头选择器添加样式
+      选择器[属性$=val]{}  给选择器中特定属性的属性值以val结尾选择器添加样式
+      选择器[属性*=val]{}  给选择器中特定属性的属性值包含val的选择器添加样式
+	
+
+
+
+
+CSS3伪类：
+	:root：代表根选择器（html）设置
+	:not：有否定意思，用于处not(选择器)之外的所有元素添加样式，多用于表单
+        :empty 空元素，只给没有内容（连一个空格都不能出现）的元素添加样式，多用于表格
+        :first-of-type  父元素下的某个类型的第一个子元素
+        :last-of-type   父元素下的某个类型的倒数第一个子元素
+        :nth-of-type(n) 父元素下的某个类型的第n个子元素,n还可以是表达式
+        :nth-last-of-type(n) 父元素下的某个类型的倒数第n个子元素,n还可以是表达式
+        :only-child   父元素下只有一个子元素，而且还是唯一的子元素  例:.nav a:only-child{}
+        :only-of-type  父元素下有多个子元素，但某个类型只有一个子元素
+        :target  目标选择器，链接跳转到的选择器设置样式
+
+
+
+
+自定义字体：@font-face{font-family:自定义字体名字}
+	在使用自定义字体时步骤
+         1.下载iconfont字体
+         2.自定义字体@font-face{font-family:自定义字体名字;src:url(字体路径),url(字体路径)...}
+	 3.使用字体，选择器{font-family:自定义字体名字;}
+	
+
+
+
+
+1.如何使图片与屏幕的高度保持一致
+    答：html,body{height:100%} 或者   :root,body{height:100%}
+
+
+2.CSS3伪类选择器a:first-of-type与a:first-child有什么区别
+    答：a:first-child 父级元素的第一个子元素   如果第一个子元素为a标签的话，可以添加样式
+        a:first-of-type 父级元素下某个类型的第一个子元素，实例中是指父级元素下第一个a标签元素
+       
+        
+
+      
+               
+
+
