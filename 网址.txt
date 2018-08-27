@@ -1,0 +1,3 @@
+常见前端小技巧：			https://www.cnblogs.com/annieSun/p/8145451.html 
+微信h5开发					http://www.php.cn/html5-tutorial-389323.html
+手册								http://www.php.cn/xiazai/shouce
