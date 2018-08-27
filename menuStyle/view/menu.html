@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/css/menu.css">
+    <link rel="stylesheet" href="../public/css/main.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-2">
+            <div class="panel-group table-responsive" role="tablist">
+                <div class="panel panel-primary leftMenu">
+                    <!-- 利用data-target指定要折叠的分组列表 -->
+                    <div class="panel-heading" id="collapseListGroupHeading1" data-toggle="collapse" data-target="#collapseListGroup1" role="tab" >
+                        <h4 class="panel-title">
+                            个人
+                            <span class="glyphicon glyphicon-chevron-up right"></span>
+                        </h4>
+                    </div>
+                    <!-- .panel-collapse和.collapse标明折叠元素 .in表示要显示出来 -->
+                    <div id="collapseListGroup1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="collapseListGroupHeading1">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <!-- 利用data-target指定URL -->
+                                <button class="menu-item-left" data-class="favorite">
+                                    <span class="glyphicon glyphicon-triangle-right"></span>个人爱好
+                                </button>
+                            </li>
+                            <li class="list-group-item">
+                                <button class="menu-item-left" data-class="sport">
+                                    <span class="glyphicon glyphicon-triangle-right"></span>个人运动
+                                </button>
+                            </li>
+                            <li class="list-group-item">
+                                <button class="menu-item-left" data-class="job">
+                                    <span class="glyphicon glyphicon-triangle-right"></span>个人工作
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--panel end-->
+                <div class="panel panel-primary leftMenu">
+                    <div class="panel-heading" id="collapseListGroupHeading2" data-toggle="collapse" data-target="#collapseListGroup2" role="tab" >
+                        <h4 class="panel-title">
+                            分组2
+                            <span class="glyphicon glyphicon-chevron-down right"></span>
+                        </h4>
+                    </div>
+                    <div id="collapseListGroup2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading2">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <button class="menu-item-left">
+                                    <span class="glyphicon glyphicon-triangle-right"></span>分组项2-1
+                                </button>
+                            </li>
+                            <li class="list-group-item">
+                                <button class="menu-item-left">
+                                    <span class="glyphicon glyphicon-triangle-right"></span>分组项2-2
+                                </button>
+                            </li>
+                            <li class="list-group-item">
+                                <button class="menu-item-left">
+                                    <span class="glyphicon glyphicon-triangle-right"></span>分组项2-3
+                                </button>
+                            </li>
+                            <li class="list-group-item">
+                                <button class="menu-item-left">
+                                    <span class="glyphicon glyphicon-triangle-right"></span>分组项2-4
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-10">
+            <section id="favorite">
+                <h4>爱好</h4>
+                <div class="part">
+                    <p>disabled即使设置为false，仍然是禁用状态，是不会被启用的。只有不设置disabled的时候才是启用状态。</p>
+                    <input type="button" disabled="false" value="false">
+                    <input type="button" disabled="true" value="true">
+                    <input type="button" value="不加此属性"><br>
+
+                    <input type="checkbox" disabled="false"> 多选一
+                    <input type="checkbox" disabled="true"> 多选二
+                    <input type="checkbox"> 不加此属性
+                </div>
+            </section>
+            <section id="sport">
+                <p>运动</p>
+            </section>
+            <section id="job">
+                <p>工作</p>
+            </section>
+        </div>
+    </div>
+</body>
+<script>
+    $(function(){
+        $(".panel-heading").click(function(e){
+            /*切换折叠指示图标*/
+            $(this).find("span").toggleClass("glyphicon-chevron-down");
+            $(this).find("span").toggleClass("glyphicon-chevron-up");
+        });
+    });
+
+    /* 显示对应内容 */
+    $('.list-group-item').on('click', 'button', function () {
+        var select = $(this).attr('data-class');
+        $('#' + select).show().siblings().hide();
+    });
+</script>
+</html>
