@@ -1,0 +1,16 @@
+1.官方下载iview-cli脚手架，安装
+2.创建一个目录，运行iview.exe,选择创建的目录 (目录不要包含中文和特殊字符)
+3.cmd下进入到刚才创建的目录，执行命令cnpm  install 安装依赖包
+4.cnpm  run dev,提示成功，就可以打开浏览器输入http://127.0.0.1:8080
+     （先是用脚手架创建项目，然后才可以安装依赖包，否则编译不成功）
+5.vue项目页面跳转是根据路由决定的，打开的router.js,有一个默认的index
+      index.vue 决定开始打开那样的页面
+      和index.vue同级创建的vue文件，可以通过http://127.0.0.1:8080/文件名  打开
+6.vue项目下的.vue文件的样式会相互影响
+      （如果不需要影响，<style  scoped></style>）
+
+vscode代码编辑器
+
+
+安装npm镜像 （之后npm可以用cnpm代替）
+	npm install -g cnpm –registry=https://registry.npm.taobao.org
