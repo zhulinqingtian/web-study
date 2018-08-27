@@ -1,0 +1,12 @@
+section{
+    width: 100%;
+    padding: 10px;
+    height: 100%;
+}
+#favorite, #sport{
+    display: none;
+}
+serction .part{
+    width: 100%;
+    padding: 10px 0;
+}
