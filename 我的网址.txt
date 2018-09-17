@@ -26,6 +26,8 @@ Minoral - html5响应后台管理模板bootstrap高端管理后台框架UI
 前端框架
 	mint 	http://mint-ui.github.io/docs/#/zh-cn2/toast
 	iview   https://www.iviewui.com/docs/guide/install
+	
+	https://www.cnblogs.com/videring/p/7588389.html    常见UI前端框架
 
 插件  
 	各种插件   http://www.jq22.com/msc184912
