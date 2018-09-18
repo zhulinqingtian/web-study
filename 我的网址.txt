@@ -7,8 +7,11 @@
 git工作 	http://www.cnblogs.com/abelsu/p/5138136.html
 		
 	详细教程  http://blog.csdn.net/liuwengai/article/details/52072344
+	
+基于 Bootstrap 4 免费开源的 Dashboard 模版  ：https://juejin.im/post/5b9eebdc6fb9a05d0a051e47
 
 
+CSS实线边框loading动画 周围的边框围着四个边动  https://www.zhangxinxu.com/wordpress/2018/08/css-gradient-dashed-border/
 Smarty - 非常强大HTML5模板包括企业商城博客后台模板等500+html页面
 	http://www.jqueryfuns.com/resource/1981
 
