@@ -17,6 +17,8 @@ Smarty - 非常强大HTML5模板包括企业商城博客后台模板等500+html页面
 
 Minoral - html5响应后台管理模板bootstrap高端管理后台框架UI 
 	http://www.jqueryfuns.com/resource/view/697
+	
+ionic   移动端前端UI框架
 
 
 图表
@@ -29,6 +31,8 @@ Minoral - html5响应后台管理模板bootstrap高端管理后台框架UI
 前端框架
 	mint 	http://mint-ui.github.io/docs/#/zh-cn2/toast
 	iview   https://www.iviewui.com/docs/guide/install
+	
+	mikit    轻量级 CSS & JavaScript 前端UI框架   http://mikit.missra.com/
 	
 	https://www.cnblogs.com/videring/p/7588389.html    常见UI前端框架
 
@@ -53,3 +57,6 @@ Minoral - html5响应后台管理模板bootstrap高端管理后台框架UI
 常见前端小技巧：			https://www.cnblogs.com/annieSun/p/8145451.html 
 微信h5开发					http://www.php.cn/html5-tutorial-389323.html
 手册								http://www.php.cn/xiazai/shouce
+
+
+https://www.cnblogs.com/liangxiaofeng/p/5936760.html     查看各种不规则图形制作方法
