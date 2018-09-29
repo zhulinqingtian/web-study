@@ -19,6 +19,7 @@ Minoral - html5响应后台管理模板bootstrap高端管理后台框架UI
 	http://www.jqueryfuns.com/resource/view/697
 	
 ionic   移动端前端UI框架
+pullToRefresh.js   下拉刷新
 
 
 图表
@@ -39,6 +40,8 @@ ionic   移动端前端UI框架
 插件  
 	各种插件   http://www.jq22.com/msc184912
 	viewerjs   图片操作插件
+	
+	前端常用插件、工具类库汇总  ：https://juejin.im/post/5ba7d5dd5188255c6140cc9d    
 
 
 
