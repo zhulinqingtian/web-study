@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>旋转木马</title>
+	<style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrap {
+            width: 1200px;
+            margin: 10px auto;
+        }
+
+        .slider {
+            height: 500px;
+            position: relative;
+        }
+
+        .slider li {
+            list-style: none;
+            position: absolute;
+            left: 200px;
+            top: 0;
+        }
+
+        .slider li img {
+            width: 100%;
+            display: block;
+        }
+
+        .arrow {
+            opacity: 1;
+        }
+
+        .prev,
+        .next {
+            width: 76px;
+            height: 112px;
+            position: absolute;
+            top: 50%;
+            margin-top: -56px;
+            z-index: 99;
+        }
+
+        .next {
+            right: 0;
+        }
+
+        .prev {
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="slider">
+        <ul class="banner-box">
+            <li><img src="img/1.jpg" /></li>
+            <li><img src="img/2.jpg" /></li>
+            <li><img src="img/3.jpg" /></li>
+            <li><img src="img/4.jpg" /></li>
+            <li><img src="img/5.jpg" /></li>
+        </ul>
+        <div class="arrow">
+            <div class="prev" id="prev"><</div>
+            <div class="next" id='next'>></div>
+        </div>
+    </div>
+</div>
+
+<p>全文地址请点击：https://blog.csdn.net/lavendersue/article/details/78112164?utm_source=copy</p> 
+
+ <script>
+    var json = [{ //  0
+        width: 400,
+        top: 70,
+        left: 50,
+        opacity: 0.2,
+        zIndex: 2
+    }, { // 1
+        width: 600,
+        top: 120,
+        left: 0,
+        opacity: 0.8,
+        zIndex: 3
+    }, { // 2
+        width: 800,
+        top: 100,
+        left: 200,
+        opacity: 1,
+        zIndex: 4
+    }, { // 3
+        width: 600,
+        top: 120,
+        left: 600,
+        opacity: 0.8,
+        zIndex: 3
+    }, { //4
+        width: 400,
+        top: 70,
+        left: 750,
+        opacity: 0.2,
+        zIndex: 2
+    }];
+    //根据json的内容把图片缓动到相应位置，同时缓动
+    var liArr = document.querySelector('.banner-box li');
+    var next = document.querySelector('.next');
+    var prev = document.querySelector('.prev');
+
+    function move() {
+        for (var i = 0; i < liArr.length; i++) {
+            animation(liArr[i], json[i]);
+        }
+    }
+    move()
+    next.onclick = function() {
+        var last = json.pop();
+        json.unshift(last);
+        move()
+    }
+    prev.onclick = function() {
+        var first = json.shift();
+        json.push(first);
+        move();
+    }
+
+    function animation(obj, json, fn) {
+        clearInterval(obj.timer);
+        obj.timer = setInterval(function() {
+            var flag = true;
+            //json里面有几个属性就要执行几次
+            var target = 0; //记录目标位置
+            var leader = 0; //记录当前位置
+            var speed = 0; //记录速度
+            for (var key in json) {
+                if (key == 'opacity') {
+                    target = Math.round(json['opacity'] * 100) //0-100
+                    leader = getStyle(obj, 'opacity') * 100 //0-100
+                } else {
+                    target = parseInt(json[key]);
+                    leader = parseInt(getStyle(obj, key));
+                }
+                speed = (target - leader) / 10;
+                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                leader = leader + speed; //0-100
+                if (key == 'opacity') {
+                    obj.style.opacity = leader / 100;
+                    obj.style.filter = "alpha(opacity=" + leader + ")";
+                } else if (key == "zIndex") {
+                    obj.style.zIndex = json['zIndex'];
+                } else {
+                    obj.style[key] = leader + "px";
+                }
+
+                if (leader != target) {
+                    flag = false
+                }
+            }
+            if (flag) {
+                clearInterval(obj.timer);
+                if (fn) {
+                    fn();
+                }
+            }
+
+        }, 20)
+    }
+
+    function getStyle(obj, attr) {
+        if (window.getComputedStyle) {
+            return window.getComputedStyle(obj, null)[attr]
+        } else {
+            return obj.currentStyle[attr];
+        }
+    }
+</script>
+</body>
+</html>

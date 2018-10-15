@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>无缝轮播</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            border: none;
+            list-style: none;
+        }
+
+        img {
+            width: 1000px;
+            height: 220px;
+        }
+
+        .slider {
+            width: 1000px;
+            height: 265px;
+            margin: 100px auto;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .slider-img {
+            width: 1000px;
+            height: 220px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .slider-ctrl {
+            text-align: center;
+            padding-top: 10px;
+        }
+
+        .slider-ctrl-con {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            text-indent: -99999px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+
+        .slider-ctrl-con.current {
+            background-position: -24px -760px;
+        }
+
+        .prev,
+        .next {
+            position: absolute;
+            top: 40%;
+            width: 30px;
+            height: 35px;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+            background-position: 0 -44px;
+        }
+    </style>
+</head>
+<body>
+	<div class="slider" id="slider" style="overflow: hidden;">
+        <div class="slider-img">
+            <ul>
+                <li>
+                    <a href="#"><img src="img/1.jpg" alt="" /></a>
+                </li>
+                <li>
+                    <a href="#"><img src="img/2.jpg" alt="" /></a>
+                </li>
+                <li>
+                    <a href="#"><img src="img/3.jpg" alt="" /></a>
+                </li>
+                <li>
+                    <a href="#"><img src="img/4.jpg" alt="" /></a>
+                </li>
+                <li>
+                    <a href="#"><img src="img/5.jpg" alt="" /></a>
+                </li>
+                <li>
+                    <a href="#"><img src="img/6.jpg" alt="" /></a>
+                </li>
+            </ul>
+        </div>
+        <div class="slider-ctrl">
+            <span class="prev" id="prev"><</span>
+            <span class="next" id="next">></span>
+        </div>
+    </div>
+    <script type="text/javascript">
+        window.onload = function() {
+            var slider = document.getElementById("slider"); //获取元素
+            var ul = document.getElementsByTagName('ul')[0];
+            var lis = ul.children;
+            var per = document.getElementById('prev');
+            var next = document.getElementById('next');
+            var imgWidth = slider.offsetWidth; //获取图片的宽度作为缓动的距离
+
+            for (var i = 0; i < lis.length; i++) { //添加span，用于点击跳转到指定图片
+                var span = document.createElement('span');
+                span.innerHTML = i;
+                span.className = "slider-ctrl-con "; //添加未选中状态
+                per.parentNode.insertBefore(span, per);
+                lis[i].style.left = imgWidth + "px";
+            }
+
+            var num = 0; //标记索引值
+            var span = document.getElementsByTagName('span'); //获取span元素
+            span[0].className += " current"; //为第一个span标签状态设置为选中状态
+            lis[0].style.left = 0 + "px"; //为第一张图片设置显示位置
+            for (var k = 0; k < span.length; k++) {
+                span[k].onclick = function() { //为所有span标签添加点击事件（包括左右按钮）
+                    if (this.className == "prev") { //当点击的是向前播放按钮时
+                        //要看上一张
+                        animation(lis[num], imgWidth); //当前图片缓动到右边位置
+                        num = --num < 0 ? lis.length - 1 : num; //索引值设置为前一张图片的索引，当索引值小于0时则等于最后一张的索引
+                        lis[num].style.left = -imgWidth + "px"; //将前一张图片瞬间移动到左侧
+                        animation(lis[num], 0); //将移动到左侧的图片，缓动到显示位置
+                        light(); //点亮底部相应的span标签
+                    } else if (this.className == 'next') { //当点击的是向后播放按钮时
+                        //要看下一张
+                        autoplay(); //按自动播放顺序播放
+                    } else {
+                        //获取当前被点击的盒子的索引值
+                        var index = this.innerHTML;
+                        //中间：left = 0；左边：left = -imgWidth+“px";右边：left = +imgWidth+”px“
+                        //判断点击的span和当前的图片的索引，谁大谁小
+                        if (index > num) { //当点击索引值大于当前播放图片的索引值时
+                            lis[index].style.left = imgWidth + "px"; //该索引值对应的图片瞬间移动到右侧
+                            animation(lis[num], -imgWidth); //当前播放图片缓动到左侧
+                            animation(lis[index], 0); //再缓动至当前播放位置
+                            num = index; //改变索引值
+                            light(); //点亮底部相应的span标签
+                        }
+                        if (index < num) {
+                            lis[index].style.left = -imgWidth + "px";
+                            animation(lis[num], imgWidth);
+                            animation(lis[index], 0);
+                            num = index;
+                            light();
+                        }
+                    }
+
+                }
+            }
+
+            function animation(obj, target) { //缓动
+                clearInterval(obj.timer); //为避免多个定时器同时运行带来的bug，在用定时器之前先清理定时器
+                obj.timer = setInterval(function() {
+                    var speed = (target - obj.offsetLeft) / 10; 
+                    speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed); //为确保能搞达到最终目标值，给speed取整
+                    obj.style.left = obj.offsetLeft + speed + "px"; //赋值给当前元素
+                    if (target == obj.offsetLeft) { //属性达到目标值时，清理定时器
+                        clearInterval(obj.timer);
+                    }
+                }, 20);
+            }
+
+            slider.timer = setInterval(function() { //当前无操作时自动播放
+                autoplay();
+            }, 2000);
+
+            slider.onmouseover = function() { //鼠标进入图片区域停止自动播放
+                clearInterval(slider.timer);
+            }
+
+            slider.onmouseout = function() { //鼠标离开图片区域恢复自动播放
+                clearInterval(slider.timer);
+                slider.timer = setInterval(function() {
+                    autoplay();
+                }, 2000);
+            }
+
+            function light() {
+                for (var j = 0; j < span.length - 2; j++) {
+                    span[j].className = "slider-ctrl-con ";
+                }
+                span[num].className += " current";
+            }
+
+            function autoplay() { //封装自动播放函数
+                animation(lis[num], -imgWidth);
+                num = ++num > lis.length - 1 ? 0 : num;
+                lis[num].style.left = imgWidth + "px";
+                animation(lis[num], 0);
+                light();
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jquery轮播图</title>
+	<link rel="stylesheet" type="text/css" href="./common/common.css">
+	<script type="text/javascript" src="./common/jquery-1.10.1.min.js"></script>
+</head>
+<body>
+    <!-- 笔记
+        offset() 方法返回或设置匹配元素相对于文档的偏移（位置）。
+        该方法返回的对象包含两个整型属性：top 和 left，以像素计。
+
+     -->
+	<div class="box">
+        <ul class="banner-box img">
+            <li><img src="img/1.jpg" alt="" /></li>
+            <li><img src="img/2.jpg" alt="" /></li>
+            <li><img src="img/3.jpg" alt="" /></li>
+            <li><img src="img/4.jpg" alt="" /></li>
+            <li><img src="img/5.jpg" alt="" /></li>
+            <li><img src="img/6.jpg" alt="" /></li>
+        </ul>
+        <ul class="circle"></ul>
+        <ul class="arrow">
+            <li class="left"><</li>
+            <li class="right">></li>
+        </ul>
+    </div>
+
+    <script>
+        var $box = $('.box');   			//轮播图容器
+        var $bannerBox = $('.banner-box'); 	//图片容器
+        var $circle = $('.circle');  		//小圆点容器
+        var $arrow = $('.arrow');			//箭头容器
+        var $leftArrow = $('.left');		//左箭头
+        var $rightArrow = $('.right')		//右箭头
+        var index = 0;						//当前显示的图片的索引
+        var translateWidth = 520;           // 每次移动的宽度
+        var bannerNumber = $('li', $bannerBox).length;  // banner个数
+
+        //============  1、在最后一幅图后面添加第一幅图  ================================================
+        var $addImg = $bannerBox.find('li').eq(0).clone(true);
+        $bannerBox.append($addImg);
+
+        // =========== 2、动态添加轮播点，同时点亮第一个  ===============================================
+        var $circles = $bannerBox.children();	//小圆点的个数即所有图片的个数集合
+        for(var i = 0; i < bannerNumber; i++){
+            var $circleLi = $("<li>");
+            $circleLi.html(i + 1);
+            $circle.append($circleLi);
+        }
+
+        var $points = $circle.children();
+        light();
+
+        function light(){
+            for(var i = 0; i < bannerNumber; i++){
+                $points[i].classList = "";
+                if (index > bannerNumber){ // 大于4时第一个点亮
+                    $points[0].classList = "current";
+                } else {
+                    $points[index].classList = "current";
+                }
+            }
+        }
+        // =========== 3、点击小圆点，ul移动到相应的图片,同时点亮小圆点 ===================================
+        $circle.on('click', 'li', function () {
+            var $this = $(this);
+            index = $this.index();
+            translate($box, -index * translateWidth);
+            light();
+        });
+
+        //============ 4、左右箭头切换图片 ==============================================================
+        $rightArrow.on('click', function (argument) {
+            autoplay();
+        });
+
+        // 左箭头
+        $leftArrow.on('click', function (argument) {
+            index--;
+            if (index < 0){
+                index = bannerNumber - 1;
+            }
+            translate($box, -index * translateWidth);
+            light();
+        });
+       
+        //===============  5、添加自动轮播功能  =========================================================
+       $box.timer = setInterval(autoplay, 2000);
+
+       $box.on('mouseover', function(){
+        clearInterval($box.timer);
+       });
+
+       $box.on('mouseout', function(){
+            clearInterval($box.timer);
+            $box.timer = setInterval(autoplay, 2000);
+       });
+
+
+        function autoplay(){
+            index++;
+            if(index > bannerNumber - 1){
+                index = 0;
+            }
+            $bannerBox.css('left', -(index * translateWidth));
+            light();
+        }
+
+        function translate($obj, width){
+            clearInterval($obj.timer);
+            $obj.timer = setInterval( function(){
+                $bannerBox.css('left', width);
+            }, 20);
+        }
+    </script>
+</body>
+</html>

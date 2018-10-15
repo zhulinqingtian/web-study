@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>点赞</title>
+	<style type="text/css">
+		.heart {
+		  	width: 100px;
+		  	height: 100px;
+		  	background: url("https://cssanimation.rocks/images/posts/steps/heart.png") no-repeat;
+		  	background-position: 0 0;
+		  	cursor: pointer;
+		  	-webkit-transition: background-position 1s steps(28);
+		  	transition: background-position 1s steps(28);
+		  	-webkit-transition-duration: 0s;
+		    transition-duration: 0s;
+		}
+		.heart.is-active {
+		  	-webkit-transition-duration: 1s;
+		    transition-duration: 1s;
+		  	background-position: -2800px 0;
+		}
+
+		body {
+		  	color: #FFF;
+		  	font: 300 16px/1.5 "Open Sans", sans-serif;
+		}
+
+		.stage {
+		  	position: fixed;
+		 	top: 50%;
+		  	left: 50%;
+		  	-webkit-transform: translate(-50%, -50%);
+		    transform: translate(-50%, -50%);
+		}
+
+	</style>
+	<style> 
+	    .hi{
+		    width: 50px; 
+		    height: 72px;
+			background-image: url("http://s.cdpn.io/79/sprite-steps.png"); 
+			/* 
+				*整个动画1s完成。 
+				*这里1s要移动500的像素，这1s要有十步走完，每步是平均下来是0.1s，            *每步比上一步多走了72px的位置，这个走是瞬间走到的。
+				*end表示每一步在接近0.1s再去走 
+			*/       
+			animation: play 1s steps(10) infinite;
+		} 
+		/*定义动画*/ 
+		@keyframes play { 
+			from { background-position: 0px 0px; }
+			to { background-position: -500px 0px; } 
+		}    
+	</style>
+</head>
+<body>
+
+
+	<img src="http://s.cdpn.io/79/sprite-steps.png" alt="此图片是500*72，主要是为了显示作用">
+	<div class="hi"></div>
+
+	<div class="stage">
+	  <div class="heart"></div>
+	</div>
+	<p>
+		steps（）阶跃函数，是transition-timing-function和animation-timing-function两个属性的属性值，他是表示两个关键帧之间的动画效果，默认是ease。
+	</p>
+	<p>
+		steps（）有两个参数：<br>
+		参数一是把这次过渡分成几段，这几段其实是在时间上分为几段去显示执行。<br>
+		参数二是表示分成几段后，他是start还是end去执行动画。参数二有两个可选值start和end，默认是end。
+		
+	</p>
+
+
+</body>
+
+<script type="text/javascript" src='common/jquery-1.10.1.min.js'></script>
+<script type="text/javascript">
+	$(function() {
+	  $(".heart").on("click", function() {
+	    $(this).toggleClass("is-active");
+   });
+});
+</script>
+</html>

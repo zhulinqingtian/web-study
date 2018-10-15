@@ -1,0 +1,164 @@
+!<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.block-center{
+			width: 800px;
+			margin:0 auto;
+			margin-bottom: 24px;
+		}
+	</style>
+</head>
+<body>
+
+<div class="loading-block block-center">
+	<style type="text/css">
+		@keyframes pillarLoading { 
+		    0%,  100% {background: lightgreen;}  
+		    50% {transform: scaleY(1.75); background: lightblue;}
+		}
+		.pillar-loading {  
+		    margin: 120px auto;
+		    width: 60px;
+		    display: flex;
+		    justify-content: space-between;
+		    background-color: #fff;
+		}
+		.pillar-loading .pillar {
+		    width: 8px;
+		    height: 40px;
+		    border-radius: 4px; 
+		    background: lightgreen;    
+		    animation-name: pillarLoading; /*执行的动画名称*/
+		    animation-iteration-count: infinite; /*执行次数*/
+		    animation-duration: 1s; /*执行时间*/
+		    animation-timing-function: ease; /*执行方式*/
+		}
+		.pillar-loading .pillar:nth-child(2){ animation-delay: 0.2s; } /*动画延迟时间*/
+		.pillar-loading .pillar:nth-child(3){ animation-delay: 0.4s; }
+		.pillar-loading .pillar:nth-child(4){ animation-delay: 0.6s; }
+		.pillar-loading .pillar:nth-child(5){ animation-delay: 0.8s; }
+	</style>
+	<p>正在加载动画</p>
+	<div class="pillar-loading">
+	    <span class="pillar"></span>
+	    <span class="pillar"></span>
+	    <span class="pillar"></span>
+	    <span class="pillar"></span> 
+	    <span class="pillar"></span>
+	</div>
+</div>
+<div class="loading-block block-center">
+	<style type="text/css">
+		/*首先是定义动画效果*/
+		@keyframes rotateLoading { 
+		   from { transform:rotate(0deg);} 
+		   100% {  transform: rotate(360deg);}
+		}
+	   /*定义基本样式，绑定动画，定义动画属性*/
+	   .loading {    
+	   		margin: 50px auto; 
+	   		width: 100px; 
+	   		height: 100px;
+	   		border-radius: 50%;
+	   		border: 10px solid  rgba(0, 0, 0, 0.2);
+	   		border-top-color: #000; /*黑色部分是圆环的border-top*/
+	   		position: relative; 
+	   		animation-name: rotateLoading;
+	   		animation-timing-function: linear; /*动画执行的方式*/
+	   		animation-duration: 1s; /*执行动画需要的时间*/
+	   		animation-iteration-count: infinite; /*动画执行的次数*/
+	   	}
+	</style>
+	<p>圆环加载动画</p>
+	<div class="loading"></div>
+</div>
+<div class="loading-block block-center">
+	<style type="text/css">
+		/*定义动画*/
+		@keyframes pointLoading {
+		     0% { transform: scale(1);opacity: 1;}
+		     100% { transform: scale(.3); opacity: 0.5;}
+        }
+        /*定义样式*/
+        .point-loading {
+        	width: 100px;
+        	height: 100px;
+        	position: relative;
+        	margin: 0 auto;
+        	margin-top: 150px;
+        	margin-bottom: 100px;
+        }
+        .point-loading .point {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: lightgreen;
+            position: absolute;
+            animation-name: pointLoading;		     /*绑定动画*/
+            animation-duration: 1s; 				 /*绑定动画完成一个周期所用时间*/
+            animation-iteration-count: infinite;	 /*动画播放次数  默认是1，infinite无限次播放*/
+        }
+        /*nth-child:选择器匹配属于其父元素的第 N 个子元素；animation-delay:动画延迟播放*/
+        .point-loading .point:nth-child(1) {
+        	left: 0;
+        	top: 50%;
+        	margin-top: -10px;
+        	animation-delay: 0.13s;
+        }
+        .point-loading .point:nth-child(2) {
+        	left: 14px;
+        	top: 14px;
+        	animation-delay: 0.26s;
+        }
+        .point-loading .point:nth-child(3) {
+        	left: 50%;
+        	top: 0;
+        	margin-left: -10px;
+        	animation-delay: 0.39s;
+        }
+        .point-loading .point:nth-child(4) {
+        	top: 14px;
+        	right: 14px;
+        	animation-delay: 0.52s;
+        }
+        .point-loading .point:nth-child(5) {
+        	right: 0;
+        	top: 50%;
+        	margin-top: -10px;
+        	animation-delay: 0.65s;
+        }
+        .point-loading .point:nth-child(6) {
+        	right: 14px;
+        	bottom: 14px;
+        	animation-delay: 0.78s;
+        }
+        .point-loading .point:nth-child(7) {
+        	bottom: 0;
+        	left: 50%;
+        	margin-left: -10px;
+        	animation-delay: 0.91s;
+        }
+        .point-loading .point:nth-child(8) {
+        	bottom: 14px;
+        	left: 14px;
+        	animation-delay: 1.04s;
+        }
+	</style>
+	<p>多点加载动画</p>
+	<div class="point-loading">
+	    <span class="point"></span>
+	    <span class="point"></span>
+	    <span class="point"></span>
+	    <span class="point"></span>
+	    <span class="point"></span>
+	    <span class="point"></span>
+	    <span class="point"></span>
+	    <span class="point"></span>
+	</div>
+</div>
+
+</div>
+</body>
+</html>

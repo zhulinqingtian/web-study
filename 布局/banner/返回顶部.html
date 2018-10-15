@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>返回顶部</title>
+        <style type="text/css">
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            html{
+                height:100%;
+            }
+            body{
+                height: 600%;
+            }
+            .to-top{
+                position: fixed;
+                right: 30px;
+                bottom: 20px;
+                display: none;
+                width: 150px;
+                height: 150px;
+
+            }
+            .to-top img{
+            	width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="to-top">
+            <img src="img/top.jpg" />
+        </div>
+
+      <!--   <script type="text/javascript">
+            var parent = document.querySelector(".to-top");
+            var img = parent.querySelector('img');
+
+            window.onscroll = function(){
+                if( scroll().top > 100){
+	                parent.style.display = "block";
+	            }else{
+	                parent.style.display = "none";
+                }
+            }
+
+            img.onclick = function(){
+                clearInterval(img.timer);
+
+                img.timer = setInterval(function(){
+                    var speed = (0 - top) / 10;
+                    var top = scroll().top;
+                    speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                    window.scrollTo(0, top + speed);
+                    if(top == 0){
+                        clearInterval(img.timer);
+                    }
+                }, 30);
+            }
+
+
+            function scroll(){
+                return{
+                   "top":document.documentElement.scrollTop + document.body.scrollTop,
+                   "left":document.documentElement.scrollLeft + document.body.scrollLeft
+                }
+            }
+        </script> -->
+
+        <script type="text/javascript" src='common/jquery-1.10.1.min.js'></script>
+        <script type="text/javascript">
+            var $parent = $(".to-top");
+            var $img = $parent.find('img');
+
+            $(window).on('scroll', function () {
+            	if(scroll().top > 100){
+	                $parent.css('display', 'block');
+	            }else{
+	                $parent.css('display', 'none');
+                }
+            });
+
+            $img.on('click', function () {
+            	clearInterval($img.timer);
+
+                $img.timer = setInterval(function(){
+                    var speed = (0 - top) / 10;
+                    var top = scroll().top;
+                    speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                    window.scrollTo(0, top + speed);
+                    if(top == 0){
+                        clearInterval($img.timer);
+                    }
+                }, 30);
+            });
+
+
+            function scroll(){
+                return{
+                   "top":document.documentElement.scrollTop + document.body.scrollTop,
+                   "left":document.documentElement.scrollLeft + document.body.scrollLeft
+                }
+            }
+        </script>
+    </body>
+</html>
