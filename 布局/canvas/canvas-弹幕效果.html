@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 600px;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+	<!-- 
+		measureText() 方法返回包含一个对象，该对象包含以像素计的指定字体宽度。
+		提示：如果您需要在文本向画布输出之前，就得到文本的宽度，那么请使用该方法。
+
+	 -->
+
+    <div class="container">
+        <canvas id="canvas" width="1200" height="600" style="background:#000; width: 600px; height: 300px;"></canvas>
+    </div>
+
+    <script type="text/javascript">
+    	function Danmaku(obj) {
+    		this.x = obj.x || 0;
+    		this.y = obj.y || 0;
+    		this.text = obj.text || '测试文本';
+    		this.textColor = obj.textColor || '#fff';
+    		this.bgColor = obj.bgColor || 'rgba(255,255,255,0.4)';
+    		this.isNeedBg = obj.isNeedBg;
+    		this.speed = obj.speed || 1;
+    		this.fontSize = obj.fontSize || 16;
+    		this.rate = obj.rate || 1; 					// 放大倍数
+    		this.scaleX = this.scaleY = this.rate * 1;
+    		this.padding = obj.padding || this.fontSize;
+    		this.width = 0;
+
+    		this.draw = function (context) {
+    			context.font = this.fontSize + 'px arial';
+    			context.textAlign = 'left';
+    			context.textBaseline = 'bottom';
+
+    			var height = this.fontSize + this.padding,
+    				width = context.measureText(this.text).width + this.padding,
+    				radius = width + radius / 2;
+
+
+				context.save();
+				context.translate(this,x, this.y); // 移动到他的起始位置
+
+    		}
+    	}
+    </script>
+</body>
+</html>

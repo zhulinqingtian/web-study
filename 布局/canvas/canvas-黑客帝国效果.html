@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		body{
+			text-align: center;
+		}
+		canvas{
+			background-color: #000;
+		}
+	</style>
+</head>
+<body>
+	<canvas width="500" height="500"></canvas>
+	<script type="text/javascript">
+		var canvas = document.querySelector('canvas'),
+			context = canvas.getContext('2d'),
+			width = canvas.width,
+			height = canvas.height;
+
+		var shadowColor = "rgba(0, 0, 0, 0.1)", // 绘制渐变阴影
+			wordsColor = "#33ff33", 			// 文字颜色
+			legalWords = "0123456789qwertyuiopasdfghjklzxcvbnm,./;'\[]QWERTYUIOP{}ASDFGHJHJKL:ZXCVBBNM<>?",					// 允许输入的文字
+			wordsArr = legalWords.split(''),	//将文字拆分进一个数组
+			font_size = 16, 					// 文字大小
+			columns = width / font_size,		// 文字降落的列数
+			drops = [];
+
+		for (var i = 0; i < columns; i++) {
+			drops[i] = 1;
+		}
+
+		function draw(text, val) {
+			context.save();
+			context.fillStyle = wordsColor;
+			context.font = font_size + 'px arial';
+			context.fillText(text, val * font_size, drops[val]*font_size);
+			// drops[i]*font_size表示位置
+			context.restore();
+		}
+
+		// 动画循环
+		(function drawFrame() {
+			window.requestAnimationFrame(drawFrame, canvas);
+			context.fillStyle = shadowColor;
+			context.fillRect(0, 0, width, height);
+
+			for (var i = 0; i < drops.length; i++) {
+				var char = Math.floor(Math.random() * wordsArr.length);
+				var text = wordsArr[char];
+				draw(text, i);
+
+				if (drops[i] * font_size > height && Math.random() > 0.98) {
+					drops[i] = 0;
+				}
+
+				drops[i]++;
+			}
+	        draw();
+		})();
+
+	</script>
+</body>
+</html>

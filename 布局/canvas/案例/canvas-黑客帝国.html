@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<canvas></canvas>
+	<script type="text/javascript">
+		var canvas = document.querySelector('canvas'),
+	    context = canvas.getContext('2d'),
+	    w = canvas.width = window.innerWidth,
+	    h = canvas.height = window.innerHeight;
+	           
+	     //初始化
+	    var clearColor = 'rgba(0, 0, 0, .1)',             //用于绘制渐变阴影
+	        wordColor = "#33ff33",                        //文字颜色
+	        words = "0123456789qwertyuiopasdfghjklzxcvbnm,./;'\[]QWERTYUIOP{}ASDFGHJHJKL:ZXCVBBNM<>?",
+	        wordsArr = words.split(''),                  //将文字拆分进一个数组
+	        font_size = 16,  							//字体大小
+	        columns = w / font_size,                     //文字降落的列数
+	        drops = [];
+
+	     for(var i = 0; i < columns; i++){
+	         drops[i] = 1;
+	     }
+
+	   function draw(){
+	       context.save();
+	       context.fillStyle = wordColor;
+	       context.font = font_size + "px arial";
+	       //核心
+	       for (var i = 0; i < drops.length; i++){
+	            var text = wordsArr[Math.floor(Math.random() * wordsArr.length)];
+	                context.fillText(text, i * font_size, drops[i] * font_size);
+	                if (drops[i] * font_size > h && Math.random() > 0.98){
+	                    drops[i] = 0;
+	                }
+                    drops[i]++;
+	        }
+	       context.restore();
+	  }
+	           
+	    //动画循环
+	  (function drawFrame(){
+	        window.requestAnimationFrame(drawFrame, canvas);
+	        context.fillStyle = clearColor;
+	        context.fillRect(0, 0, w, h);  //注意这
+	        draw();
+	   }())
+	</script>
+
+	clearColor = 'rgba(0, 0, 0, .1)',用于绘制阴影。 其原理是：每当动画绘制新的一帧，就在上面覆盖一个透明度为0.1的黑色矩形。随着层数的叠加，文字就会被逐渐遮盖形成了我们看到的阴影。
+
+	context.fillText(text, i * font_size, drops[i] * font_size);  
+		三个参数，第一个是绘制的文字，第二，三是文字的坐标。
+		一行一行的绘制。 每一次循环y坐标值相同
+
+	if (drops[i] * font_size > h && Math.random() > 0.98){  // 了让他们看上去运动的速度不一致，加上了这行代码
+           drops[i] = 0;
+ 	}
+	这行代码判断的是当前绘制的这行文字的Y坐标是否超过了canvas的高度，如果超过又从第一行开始绘制，那么如何让他们出现差异性呢！小秘密在Math.random() > 0.98这，if中的两个条件一个是判断文字高度，另一个是判断一个随机数是佛大于0.98，只有当两个条件同时成立才能回到第一行重新绘制。所以，由于第二个条件是随机的，那么差异性就自然而然的出现了！
+</body>
+</html>

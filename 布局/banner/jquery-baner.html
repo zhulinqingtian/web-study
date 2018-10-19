@@ -39,11 +39,12 @@
         var bannerNumber = $('li', $bannerBox).length;  // banner个数
 
         //============  1、在最后一幅图后面添加第一幅图  ================================================
+
         var $addImg = $bannerBox.find('li').eq(0).clone(true);
         $bannerBox.append($addImg);
 
         // =========== 2、动态添加轮播点，同时点亮第一个  ===============================================
-        var $circles = $bannerBox.children();	//小圆点的个数即所有图片的个数集合
+
         for(var i = 0; i < bannerNumber; i++){
             var $circleLi = $("<li>");
             $circleLi.html(i + 1);
@@ -64,6 +65,7 @@
             }
         }
         // =========== 3、点击小圆点，ul移动到相应的图片,同时点亮小圆点 ===================================
+
         $circle.on('click', 'li', function () {
             var $this = $(this);
             index = $this.index();
