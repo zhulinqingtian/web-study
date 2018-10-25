@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		canvas{
+			background-color: #000;
+		}
+	</style>
+</head>
+<body>
+	createRadialGradient()	创建放射状/环形的渐变（用在画布内容上） (起始圆的横坐标, 起始圆的纵坐标, 起始圆的半径, 结束圆的横坐标, 结束圆的纵坐标, 结束圆的半径)
+	context.arc()			绘制椭圆（中心点横坐标，中心点纵坐标，半径，开始角度，结束角度，是否顺时针）
+<canvas id="canvas" width="500" height="500"></canvas>
+<script type="text/javascript">
+	function Ball3d(radius){
+	    if(radius === undefined) {radius = 40;}
+	    this.x = 0; // 位置
+	    this.y = 0;
+	    this.xpos = 0;
+	    this.ypos = 0;
+	    this.zpos = 0;
+	    this.vz = 0;
+	    this.vx = 0;
+	    this.vy = 0;
+	    this.radius = radius; 	// 圆的半径
+	    this.rotation = 0; 		// 旋转角度
+	    this.mass = 1;
+	    this.scaleX = 1;		// 缩放
+	    this.scaleY = 1;
+	    this.name = "";
+	    this.lineWidth = 1;
+
+	}
+
+	Ball3d.prototype.draw = function(context){
+	    context.save();
+	    context.translate(this.x, this.y);
+	    context.rotate(this.rotation);
+	    context.scale(this.scaleX, this.scaleY);
+	    context.lineWidth = this.lineWidth;
+	    var gradient = context.createRadialGradient(0, 0, 0, 0, 0, this.radius);
+	        gradient.addColorStop(0,"rgba(255,255,255,1)");
+	        gradient.addColorStop(0.2,"rgba(0,255,255,1)");
+	        gradient.addColorStop(0.3,"rgba(0,0,100,1)");
+	        gradient.addColorStop(1,"rgba(0,0,0,0.1)");
+	    context.fillStyle = gradient;
+	    context.beginPath();
+	    context.arc(0, 0, this.radius, 0, Math.PI * 2, false);
+	    context.closePath();
+	    context.fill();
+	    context.restore();
+	}
+
+	
+	window.onload = function () {
+      var canvas = document.getElementById('canvas'),
+          context = canvas.getContext('2d'),
+          balls = [],
+          numBalls = 300, // 绘制球的数量
+          fl = 200,
+          vpX = canvas.width / 2,
+          vpY = canvas.height / 2,
+          floor = 250,
+          ax = 0,
+          ay = 0,
+          az = 0,
+          vx = 0,
+          vy = 0,
+          vz = 0.5,
+          gravity = 0.3,
+          friction = 0.98;
+
+      for (var ball, i = 0; i < numBalls; i++) {
+        var size = Math.random() * 80, // 0-80  半径
+            color = Math.random()*(0xffffff);
+           
+            ball = new Ball3d(size, "#444");
+        
+            ball.xpos = Math.random() * 3000 - 1500;
+            ball.ypos = Math.random()* 1000 - 500;
+            ball.zpos = Math.random() * 10000;
+        
+            balls.push(ball);
+      }
+    
+
+      window.addEventListener('keydown', function (event) {
+        switch (event.keyCode) {
+        case 38:        //up
+          az = -1;
+          break;
+        case 40:        //down
+          az = 1;
+          break;
+        case 37:        //left
+          ax = 1;
+          break;
+        case 39:        //right
+          ax = -1;
+          break;
+        case 32:        //space
+          ay = 1;
+          break;
+        }
+      }, false);
+
+      window.addEventListener('keyup', function (event) {
+        switch (event.keyCode) {
+        case 38:        //up
+        case 40:        //down
+          az = 0;
+          break;
+        case 37:        //left
+        case 39:        //right
+          ax = 0;
+          break;
+        case 32:        //space
+          ay = 0;
+          break;
+        }
+      }, false);
+      
+      function move (ball) {
+        ball.xpos += vx;
+        ball.ypos += vy;
+        ball.zpos += vz;
+          
+        if(ball.ypos < -500){
+            ball.ypos = 500;
+        }
+        
+        if (ball.zpos < -fl) {
+          ball.zpos += 10000;
+        }
+        if (ball.zpos > 10000 - fl) {
+          ball.zpos -= 10000;
+        }
+        var scale = fl / (fl + ball.zpos);
+        ball.scaleX = ball.scaleY = scale;
+        ball.x = vpX + ball.xpos * scale;
+        ball.y = vpY + ball.ypos * scale;
+        ball.alpha = scale;
+      }
+
+      function zSort (a, b) {
+        return (b.zpos - a.zpos);
+      }
+      
+      function draw (ball) {
+        ball.draw(context);
+      }
+        
+     
+      (function drawFrame () {
+        window.requestAnimationFrame(drawFrame, canvas);
+       context.clearRect(0, 0, canvas.width, canvas.height);
+        
+        
+        vx += ax;
+        vy += ay;
+        vz += az;
+        vy -= gravity;
+        balls.forEach(move);
+        vx *= friction;
+        vy *= friction;
+        vz *= friction;
+        balls.sort(zSort);
+        balls.forEach(draw);
+      }())
+    }
+</script>
+</body>
+</html>

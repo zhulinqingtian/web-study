@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		img{
+			width: 200px;
+		}
+	</style>
+</head>
+<body>
+<div id="progressBar" style="width:1px;height:17px;background:#0f0;">0%</div>
+<input type="button" value="Run" id="run"/>
+
+<script type="text/javascript">
+	window.requestAnimationFrame = 
+		window.requestAnimationFrame || 
+		window.mozRequestAnimationFrame || 
+		window.webkitRequestAnimationFrame || 
+		window.msRequestAnimationFrame;
+	var start = null;
+	var progressBar = document.getElementById("progressBar");
+	var percent = 0;
+
+	function render(timestamp) {
+	    if (percent < 100) {
+	    	percent += 1;
+		    progressBar.style.width = percent + "%";
+		    progressBar.innerHTML = percent + "%";
+	    	start = requestAnimationFrame(render);
+	    }/* else {
+	    	percent = 0;
+	    	requestAnimationFrame(render);
+	    }*/
+	}
+	requestAnimationFrame(render);
+
+	document.getElementById("run").addEventListener("click", function() {
+	    progressBar.style.width = "1px";
+	    percent = 0;
+	    cancelAnimationFrame(start);
+	    requestAnimationFrame(render);
+	}, false);
+</script>
+
+<img src="../canvas动画/img/autosize1.jpg">
+<canvas id="canvas" width="500" height="500"></canvas>
+
+<script type="text/javascript">
+	var imgEle = document.querySeletor('img');
+	var canvas = document.querySelector('canvas');
+	var context = canvas.getContext('2d');
+
+	context.drawImage(imgEle, 100, 100);
+</script>
+</body>
+</html>

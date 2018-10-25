@@ -21,39 +21,123 @@
 	 -->
 
     <div class="container">
-        <canvas id="canvas" width="1200" height="600" style="background:#000; width: 600px; height: 300px;"></canvas>
+        <canvas id="canvas" width="600" height="300" style="background:#000;"></canvas>
     </div>
 
     <script type="text/javascript">
-    	function Danmaku(obj) {
-    		this.x = obj.x || 0;
-    		this.y = obj.y || 0;
-    		this.text = obj.text || '测试文本';
-    		this.textColor = obj.textColor || '#fff';
-    		this.bgColor = obj.bgColor || 'rgba(255,255,255,0.4)';
-    		this.isNeedBg = obj.isNeedBg;
-    		this.speed = obj.speed || 1;
-    		this.fontSize = obj.fontSize || 16;
-    		this.rate = obj.rate || 1; 					// 放大倍数
-    		this.scaleX = this.scaleY = this.rate * 1;
-    		this.padding = obj.padding || this.fontSize;
-    		this.width = 0;
+         function Danmaku(obj) {
+            this.x = obj.x || 0;
+            this.y = obj.y || 0;
+            this.text = obj.text || '123';
+            this.textColor = obj.textColor || '#fff';
+            this.bgColor = obj.bgColor || 'rgba(255,255,255,0.4)';
+            this.isNeedBg = obj.isNeedBg;
+            this.speed = obj.speed || 1;
+            this.fontSize = obj.fontSize || 16;
+            this.rate = obj.rate || 1;                  // 放大倍数
+            this.scaleX = this.scaleY = this.rate * 1;
+            this.padding = obj.padding || this.fontSize;
+            this.width = 0;
 
-    		this.draw = function (context) {
-    			context.font = this.fontSize + 'px arial';
-    			context.textAlign = 'left';
-    			context.textBaseline = 'bottom';
+            this.draw = function (context) {
+                context.font = this.fontSize + 'px arial';
+                context.textAlign = 'left';
+                context.textBaseline = 'bottom';
 
-    			var height = this.fontSize + this.padding,
-    				width = context.measureText(this.text).width + this.padding,
-    				radius = width + radius / 2;
+                var height = this.fontSize + this.padding,
+                    width = context.measureText(this.text).width + this.padding,
+                    radius = height / 2;
 
+                this.width = width + radius * 2;
 
-				context.save();
-				context.translate(this,x, this.y); // 移动到他的起始位置
+                if(this.isNeedBg) {
+                    context.save();
+                    context.translate(this.x, this.y);
+                    context.scale(this.scaleX, this.scaleY);
+                    context.fillStyle = this.bgColor;
 
-    		}
-    	}
+                    context.moveTo(this.x, this.y + this.radius);
+                    context.arc(this.x, this.y + radius, radius, 0, Math.PI*2);
+
+                    context.moveTo(this.x + width, this.y + this.radius);
+                    context.arc(this.x + width, this.y + radius, radius, 0, Math.PI*2);
+
+                    context.moveTo(this.x, this.y);
+                    context.rect(this.x, this.y, width, height);
+                    
+                    context.closePath();
+                    context.fill();
+                    context.restore();
+                }
+
+                context.save();
+                context.translate(this.x, this.y);  // 移动到他的起始位置
+                context.scale(this.scaleX, this.scaleY);
+                context.fillStyle = this.textColor;
+                context.beginPath();
+                context.fillText(this.text, this.x + this.padding/2, this.y + this.fontSize + this.padding / 2)
+                context.closePath();
+                context.fill();
+                context.restore();
+
+            }
+        }
+
+    </script>
+
+    <script type="text/javascript">
+        window.onload = function () {
+            var canvas = document.getElementById('canvas');
+            var context = canvas.getContext('2d');
+            var words = ['测试文本1','测试文本2','测试文本3','测试文本4','测试文本5','测试文本6','测试文本7','测试文本8','测试文本9','测试文本10'];
+            var canvasW = canvas.width,
+                canvasH = canvas.height;
+
+            var DanmakuList = createdDanmaku().reverse(); // 包含所有弹幕对象
+
+            function createdDanmaku() {
+                var danmakuArr = []; 
+                words.forEach(function (word) {
+                    var danmaku = new Danmaku({
+                        x: getRandom(600, 1000),
+                        y: getRandom(50, 250),
+                        text: word,
+                        textColor: '#fff',
+                        fontSize: Math.round(Math.random()*30 + 10),
+                        speed: getRandom(1, 3),
+                        isNeedBg: true
+                    });
+                    danmakuArr.push(danmaku);
+                });
+                return danmakuArr;
+            }
+
+            function getRandom(n, m) {
+                return Math.random() * (m - n) + n;
+            }
+
+            function randColor() {
+                return '#'+Math.floor(Math.random()*0xffffff).toString(16);
+            }
+            function draw(danmakuArr) {
+                danmakuArr.forEach(function (danmaku) {
+                    danmaku.x -= danmaku.speed;
+
+                    if (danmaku.x < -danmaku.width) {
+                        danmaku.x = getRandom(600, 1000);
+                        danmaku.y = getRandom(50, 250);
+                    }
+
+                    danmaku.draw(context);
+                });
+            }
+
+            (function drawFrames() {
+                window.requestAnimationFrame(drawFrames);
+                context.clearRect(0, 0, canvasW, canvasH);
+                draw(DanmakuList);
+            })();
+        }
     </script>
 </body>
 </html>
