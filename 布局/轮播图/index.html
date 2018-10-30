@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>轮播封装</title>
+	<style type="text/css">
+		*{margin: 0;padding: 0;}
+		ul li{list-style: none;}
+
+		.lbt_on{position: absolute;bottom: 10px; left: 50%; margin-left: -25px;}
+		.lbt_on li{float: left;  margin:  auto 0;}
+		.lbt_on li{width: 9px; height: 9px; border-radius: 50%; margin-left: 5px; background: blue; cursor: pointer; display: inline-block; float: none; }
+		.lbt_on li.on{background: #fff;}
+	</style>
+</head>
+<body>
+	<div class="tempWrap">
+		<ul class="banner-box" style="position: relative; overflow: hidden; padding: 0px; margin: 0px; transition: left 0.5s;">
+			<li style="float: left; width: 800px;"> <img src="../css动画/img/autosize1.jpg" style='width:100%'></li>
+			<li style="float: left; width: 800px;"> <img src="../css动画/img/autosize1.jpg" style='width:100%'></li>
+			<li style="float: left; width: 800px;"> <img src="../css动画/img/autosize1.jpg" style='width:100%'>  </li>
+		</ul>
+		<ul class="lbt_on">
+			<li class="on"></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+<script type="text/javascript" src="jquery-1.10.1.min.js"></script>
+<script type="text/javascript">
+	// 轮播图
+function lbtfn(a,b,c,d,e,f,g,i){
+  a.css ({'width':g*e+'px','left':0});
+  function lbt(){
+    i++; if(i == g)i = 0;
+    a.css('left',(i*-e)+'px');
+    d.eq(i).addClass('on').siblings().removeClass('on');
+  }
+  f.hover(function(){
+    clearInterval(timer);
+  },function(){
+    timer = setInterval(function () {lbt();}, 2000);
+  });
+
+  d.on('click',function(){
+    i = $(this).index() -1; lbt();
+  })
+  timer = setInterval(function () {lbt();}, 2000);
+}
+
+var $bannerBox = $('.banner-box'),
+	$bannerLis = $('li', $bannerBox),
+	$optionBox =  $('.lbt_on'),
+	$optionLis = $('.lbt_on li'),
+	$allLis = $('.banner-box li,.lbt_on li');
+
+lbtfn($bannerBox, $optionBox, $bannerLis, $optionLis, parseInt($bannerLis.css('width')), $allLis, $bannerLis.length, 0 );
+</script>
+</body>
+</html>
