@@ -1,0 +1,3 @@
+ÖØÖÃÍøÂç
+Ipconfig  /release
+Ipconfig  /renew
