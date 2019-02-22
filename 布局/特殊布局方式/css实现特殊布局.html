@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSS 斜线的实现</title>
+	<link rel="stylesheet" type="text/css" href="../common/common.css">
+	<style type="text/css">
+		.example{
+		  position:relative;  
+		  margin:50px auto;
+		  width:100px;
+		  height:100px;
+		  box-sizing:border-box;
+		  border:1px solid #333;
+		}
+	</style>
+
+	<!-- 方法一 -->
+	<style type="text/css">
+
+		.method-one::before{
+		  content:"";
+		  position:absolute;
+		  left:0;
+		  top:0;
+		  width:100%;
+		  height:50px;
+		  box-sizing:border-box;
+		  border-bottom:1px solid deeppink;
+		  transform-origin:bottom center;
+		  transform:rotateZ(45deg) scale(1.414);
+		  /*animation:slash 5s infinite ease;*/
+		}
+
+		@keyframes slash{
+		  0%{
+		    transform:rotateZ(0deg) scale(1);
+		  }
+		  30%{
+		    transform:rotateZ(45deg) scale(1);
+		  }
+		  60%{
+		    transform:rotateZ(45deg) scale(1.414);
+		  }
+		  100%{
+		    transform:rotateZ(45deg) scale(1.414);
+		  }
+		}
+	</style>
+
+	<!-- 方法二 -->
+	<style type="text/css">
+		.method-two{
+		  background:
+		    linear-gradient(45deg, transparent 49.5%, deeppink 49.5%, deeppink 50.5%, transparent 50.5%);
+		}
+	</style>
+
+	<!-- 方法三 -->
+	<style type="text/css">
+		.method-three{ 
+		  background:#fff;
+		}
+
+		.method-three::before{
+		  content:"";
+		  position:absolute;
+		  left:0;
+		  bottom:0;
+		  width:0;
+		  height:0;
+		  border:49px solid transparent;
+		  border-left:49px solid deeppink;
+		  border-bottom:49px solid deeppink;
+		  animation:slash 6s infinite ease;
+		}
+
+		.method-three::after{
+		  content:"";
+		  position:absolute;
+		  left:0;
+		  bottom:0;
+		  width:0;
+		  height:0;
+		  border:48px solid transparent;
+		  border-left:48px solid #fff;
+		  border-bottom:48px solid #fff;
+		  animation:slash2 6s infinite ease;
+		}
+
+		@keyframes slash{
+		  0%{
+		    transform:translate(-50px);
+		  }
+		  30%{
+		    transform:translate(0px);
+		  }
+		  100%{
+		    transform:translate(0px);
+		  }
+		}
+		@keyframes slash2{
+		  0%{
+		    transform:translate(-100px);
+		  }
+		  30%{
+		    transform:translate(-100px);
+		  }
+		  60%{
+		    transform:translate(0px);
+		  }
+		  100%{
+		    transform:translate(0px);
+		  }
+		}
+	</style>
+
+	<!-- 方法四 -->
+	<style type="text/css">
+		.method-four{
+		  background-color:deeppink;
+		}
+
+		.method-four::before{
+		  content:"";
+		  position:absolute;
+		  left:0px;
+		  top:0;
+		  right:0;
+		  bottom:0;
+		  -webkit-clip-path: polygon(0 0, 0 100px, 100px 100px, 0 0);
+		  background:#fff;
+		  transform:translateX(-120px);
+		  animation:move 5s infinite linear;
+		}
+
+		.method-four::after{
+		  content:"";
+		  position:absolute;
+		  left:0;
+		  top:0;
+		  right:0;
+		  bottom:0;
+		  -webkit-clip-path: polygon(100px 99px, 100px 0, 1px 0, 100px 99px);
+		  background:#fff;
+		  transform:translateX(120px);
+		  animation:move 5s infinite linear;
+		}
+
+		@keyframes move{
+		  40%{
+		    transform:translateX(0px);
+		  }
+		  100%{
+		    transform:translateX(0px);
+		  }
+		}
+	</style>
+</head>
+<body>
+	<div class="panel">
+		<h3>CSS 斜线的实现</h3>
+		<hr>
+
+		<p>法一、CSS3 旋转缩放</p>
+		<p> 伪元素 画出一条直线，然后绕 div 中心旋转 45deg ，再缩放一下就可以得到。</p>
+
+		<div class="example method-one"></div>
+
+		<hr>
+
+		<p>法二、线性渐变实现</p>
+		<p>我们选定线性渐变的方向为 45deg，依次将渐变色值设为：transparent -> deeppink -> deeppink -> transparent。</p>
+		<div class="example method-two"></div>
+
+		<hr>
+
+		<p>法三、伪元素+三角形</p>
+		<div class="example method-three"></div>
+
+		<hr>
+
+		<p>法四、CSS斜线（clip-path）</p>
+		<div class="example method-four"></div>
+	</div>
+
+</body>
+</html>

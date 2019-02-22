@@ -1,0 +1,12 @@
+import QRCode from 'qrcode';
+
+<canvas ref="comment" className="img-qr-code" width="200px" height="200px"></canvas>
+
+
+_generateQR () {
+// this.state.checkUrl : µØÖ·
+  QRCode.toCanvas(this.refs.comment, this.state.checkUrl)
+    .catch((err) => {
+      console.error(err);
+    });
+}

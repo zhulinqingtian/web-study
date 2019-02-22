@@ -1,0 +1,19 @@
+阿里聚星台项目搭建
+
+观看官方客户运营平台(A) 地址：https://ecrm.taobao.com/p/base/homepage.htm
+
+原型地址 ：http://axshare.shomop.com/ecrm
+
+
+1. 全局安装fie     npm install fie -g
+2. 切换外网        fie  switch
+3.检查是否安装成功 fie -v
+4.使用帮助         fie -h
+
+
+5.安装blue套件     fie install toolkit-blue
+6.新建文件夹blue-demo,进入文件夹
+7.初始化           fie init blue
+8.开启服务         fie start
+
+
