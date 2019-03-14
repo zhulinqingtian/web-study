@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 公共部分 */
+        .main{
+            width: 400px;
+            margin: 12px auto;
+            color: #fff;
+        }
+        .main-float{
+            background-color: #7EC4CC;
+        }
+        .main-grid{
+            background-color: hotpink;
+        }
+        .main-flex{
+            background-color: cornflowerblue;
+        }
+        .main-flow{
+            background-color: lightcoral;
+        }
+        .main-absolute{
+            background-color: orangered;
+        }
+
+        dl {
+            line-height: 1.5;
+            margin: 0; padding: 10px;
+        }
+        dd {
+            word-break: break-all;
+            text-align: right;
+            margin-left: 0;
+        }
+        dd:empty::before {
+            content: '-';
+            color: #fff;
+        }
+
+        /* -float实现- */
+        .main-float dt {
+            width: 100px;
+            float: left;
+        }
+        .main-float dd { overflow: hidden; }
+
+        /* grid实现 */
+        .main-grid dl {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            grid-column-gap: 100px;
+        }
+
+        /* -absolute实现- */
+        .main-absolute dt { position: absolute; }
+        .main-absolute dd { margin-left: 100px; }
+
+        /* -flex实现- */
+        .main-flex dl {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .main-flex dt { width: 100px; }
+        .main-flex dd { width: calc(100% - 100px); }
+
+        /* 流体特性实现 */
+        .main-flow dd { margin: -24px 0 0 100px;  }
+    </style>
+</head>
+<body>
+    <!--float实现-->
+    <div class="main main-float">
+        <dl>
+            <dt>float</dt>
+            <dd>Zwicon：是一个免费图标网站，网站会清理 svg 无用的编码为你节省时间，Zwicon共有 566 个图案，26 种分类。</dd>
+            <dt>登录方式</dt>
+            <dd>qq互联登录qq互联登录qq互联登录qq互联登录qq互联登录</dd>
+            <dt>绑定时间</dt>
+            <dd></dd>
+            <dt>绑定状态</dt>
+            <dd>有效</dd>
+        </dl>
+    </div>
+
+    <!--grid实现-->
+    <div class="main main-grid">
+        <dl>
+            <dt>grid</dt>
+            <dd>Zwicon：是一个免费图标网站，网站会清理 svg 无用的编码为你节省时间，Zwicon共有 566 个图案，26 种分类。</dd>
+            <dt>登录方式</dt>
+            <dd>qq互联登录qq互联登录qq互联登录qq互联登录qq互联登录</dd>
+            <dt>绑定时间</dt>
+            <dd>2019-03-14</dd>
+            <dt>绑定状态</dt>
+            <dd>有效</dd>
+        </dl>
+    </div>
+
+    <!--absolute实现-->
+    <div class="main main-absolute">
+        <dl>
+            <dt>absolute</dt>
+            <dd>Zwicon：是一个免费图标网站，网站会清理 svg 无用的编码为你节省时间，Zwicon共有 566 个图案，26 种分类。</dd>
+            <dt>登录方式</dt>
+            <dd>qq互联登录qq互联登录qq互联登录qq互联登录qq互联登录</dd>
+            <dt>绑定时间</dt>
+            <dd>2019-03-14</dd>
+            <dt>绑定状态</dt>
+            <dd>有效</dd>
+        </dl>
+    </div>
+
+    <!--flex实现-->
+    <div class="main main-flex">
+        <dl>
+            <dt>flex</dt>
+            <dd>Zwicon：是一个免费图标网站，网站会清理 svg 无用的编码为你节省时间，Zwicon共有 566 个图案，26 种分类。</dd>
+            <dt>登录方式</dt>
+            <dd>qq互联登录qq互联登录qq互联登录qq互联登录qq互联登录</dd>
+            <dt>绑定时间</dt>
+            <dd>2019-03-14</dd>
+            <dt>绑定状态</dt>
+            <dd>有效</dd>
+        </dl>
+    </div>
+
+    <!--流体特性实现-->
+    <div class="main main-flow">
+        <dl>
+            <dt>flow</dt>
+            <dd>Zwicon：是一个免费图标网站，网站会清理 svg 无用的编码为你节省时间，Zwicon共有 566 个图案，26 种分类。</dd>
+            <dt>登录方式</dt>
+            <dd>qq互联登录qq互联登录qq互联登录qq互联登录qq互联登录</dd>
+            <dt>绑定时间</dt>
+            <dd>2019-03-14</dd>
+            <dt>绑定状态</dt>
+            <dd>有效</dd>
+        </dl>
+    </div>
+
+</body>
+</html>
