@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7b24df35-a0d6-489e-b3f8-35c2d3ebac09" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/web-study.iml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/布局/css之border-radius制作半圆、四分之一圆.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/布局/特殊布局方式/关于圆的形状实现.docx" />
-      <change beforePath="$PROJECT_DIR$/布局/flex布局.docx" afterPath="$PROJECT_DIR$/布局/flex布局.docx" />
-      <change beforePath="$PROJECT_DIR$/布局/布局.html" afterPath="$PROJECT_DIR$/布局/Css实现右边自适应布局的五种方法.html" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,11 +13,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="Css实现右边自适应布局的五种方法.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Css实现右边自适应布局的五种方法.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/布局/Css实现右边自适应布局的五种方法.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1404">
-              <caret line="90" column="17" lean-forward="false" selection-start-line="90" selection-start-column="17" selection-end-line="90" selection-end-column="17" />
+            <state relative-caret-position="257">
+              <caret line="103" column="0" lean-forward="true" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
               <folding>
                 <element signature="e#338#431#0" expanded="false" />
                 <element signature="e#451#501#0" expanded="false" />
@@ -43,41 +38,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="prerecharge.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../prerecharge.js">
+      <file leaf-file-name="Javascript将图片的绝对路径转换为base64编码.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/javascript 知识点/Javascript将图片的绝对路径转换为base64编码.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2754">
-              <caret line="147" column="3" lean-forward="false" selection-start-line="147" selection-start-column="3" selection-end-line="147" selection-end-column="3" />
-              <folding>
-                <element signature="e#687#1342#0" expanded="false" />
-                <element signature="n#!!block;n#payByAlipay#0" expanded="false" />
-                <element signature="e#4332#4682#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="后台main.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../后台main.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="513">
-              <caret line="220" column="9" lean-forward="false" selection-start-line="220" selection-start-column="9" selection-end-line="220" selection-end-column="9" />
-              <folding>
-                <element signature="n#header#0;n#!!top" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="recharge618.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../recharge618.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2322">
-              <caret line="118" column="3" lean-forward="false" selection-start-line="118" selection-start-column="3" selection-end-line="118" selection-end-column="3" />
-              <folding>
-                <element signature="n#!!block;n#CustomPayByAlipay#0" expanded="false" />
-                <element signature="e#2838#3532#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="27">
+              <caret line="13" column="5" lean-forward="true" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -109,6 +75,7 @@
         <option value="$PROJECT_DIR$/../后台main.jade" />
         <option value="$PROJECT_DIR$/../后台main.html" />
         <option value="$PROJECT_DIR$/../统计分支-main.vue" />
+        <option value="$PROJECT_DIR$/javascript 知识点/Javascript将图片的绝对路径转换为base64编码.html" />
       </list>
     </option>
   </component>
@@ -118,9 +85,9 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="293" />
-    <option name="y" value="113" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="336" />
+    <option name="y" value="78" />
     <option name="width" value="1448" />
     <option name="height" value="941" />
   </component>
@@ -139,7 +106,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -151,7 +118,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="PackagesPane" />
       <pane id="AndroidView" />
     </panes>
@@ -279,6 +246,7 @@
       <workItem from="1552617248925" duration="3820000" />
       <workItem from="1552891410340" duration="5800000" />
       <workItem from="1553053623883" duration="1574000" />
+      <workItem from="1557886251977" duration="1642000" />
     </task>
     <task id="LOCAL-00001" summary="Del : 部分文件移到segmentfault">
       <created>1541492072621</created>
@@ -298,10 +266,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16974000" />
+    <option name="totallyTimeSpent" value="18616000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="293" y="113" width="1448" height="941" extended-state="1" />
+    <frame x="336" y="78" width="1448" height="941" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15883191" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -351,6 +319,29 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/布局/Css实现右边自适应布局的五种方法.html">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#338#431#0" expanded="false" />
+            <element signature="e#451#501#0" expanded="false" />
+            <element signature="e#520#570#0" expanded="false" />
+            <element signature="e#589#646#0" expanded="false" />
+            <element signature="e#665#718#0" expanded="false" />
+            <element signature="e#741#793#0" expanded="false" />
+            <element signature="e#806#885#0" expanded="false" />
+            <element signature="e#897#1002#0" expanded="false" />
+            <element signature="e#1028#1090#0" expanded="false" />
+            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#4;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/布局/Css实现右边自适应布局的五种方法.html">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1485">
           <caret line="90" column="17" lean-forward="false" selection-start-line="90" selection-start-column="17" selection-end-line="90" selection-end-column="17" />
           <folding>
@@ -372,39 +363,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../prerecharge.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3969">
-          <caret line="147" column="3" lean-forward="false" selection-start-line="147" selection-start-column="3" selection-end-line="147" selection-end-column="3" />
-          <folding>
-            <element signature="e#687#1342#0" expanded="false" />
-            <element signature="n#!!block;n#payByAlipay#0" expanded="false" />
-            <element signature="e#4332#4682#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../recharge618.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2322">
-          <caret line="118" column="3" lean-forward="false" selection-start-line="118" selection-start-column="3" selection-end-line="118" selection-end-column="3" />
-          <folding>
-            <element signature="n#!!block;n#CustomPayByAlipay#0" expanded="false" />
-            <element signature="e#2838#3532#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../后台main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="220" column="9" lean-forward="true" selection-start-line="220" selection-start-column="9" selection-end-line="220" selection-end-column="9" />
-          <folding>
-            <element signature="n#header#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../prerecharge.js" />
+    <entry file="file://$PROJECT_DIR$/../recharge618.js" />
+    <entry file="file://$PROJECT_DIR$/../后台main.html" />
     <entry file="file://$PROJECT_DIR$/布局/Css实现右边自适应布局的五种方法.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1836">
@@ -472,89 +433,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../recharge618.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2322">
-          <caret line="118" column="3" lean-forward="false" selection-start-line="118" selection-start-column="3" selection-end-line="118" selection-end-column="3" />
-          <folding>
-            <element signature="n#!!block;n#CustomPayByAlipay#0" expanded="false" />
-            <element signature="e#2838#3532#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../recharge618.js" />
     <entry file="file://$PROJECT_DIR$/../后台main.jade" />
-    <entry file="file://$PROJECT_DIR$/../prerecharge.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2754">
-          <caret line="147" column="3" lean-forward="false" selection-start-line="147" selection-start-column="3" selection-end-line="147" selection-end-column="3" />
-          <folding>
-            <element signature="e#687#1342#0" expanded="false" />
-            <element signature="n#!!block;n#payByAlipay#0" expanded="false" />
-            <element signature="e#4332#4682#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../后台main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="220" column="9" lean-forward="false" selection-start-line="220" selection-start-column="9" selection-end-line="220" selection-end-column="9" />
-          <folding>
-            <element signature="n#header#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../统计分支-main.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="185" column="40" lean-forward="false" selection-start-line="185" selection-start-column="40" selection-end-line="185" selection-end-column="40" />
-          <folding>
-            <element signature="n#MenuGroup#1;n#Submenu#0;n#Menu#0;n#Row#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#MenuItem#1;n#MenuGroup#1;n#Submenu#0;n#Menu#0;n#Row#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#MenuItem#2;n#MenuGroup#1;n#Submenu#0;n#Menu#0;n#Row#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#MenuItem#3;n#MenuGroup#1;n#Submenu#0;n#Menu#0;n#Row#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#MenuItem#4;n#MenuGroup#1;n#Submenu#0;n#Menu#0;n#Row#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#MenuItem#5;n#MenuGroup#1;n#Submenu#0;n#Menu#0;n#Row#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#MenuItem#0;n#Submenu#0;n#Menu#0;n#Row#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#Submenu#1;n#Menu#0;n#Row#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#Submenu#2;n#Menu#0;n#Row#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#0;n#Row#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="e#7971#7994#0" expanded="true" />
-            <element signature="e#9187#9268#0" expanded="false" />
-            <element signature="e#9318#10204#0" expanded="false" />
-            <element signature="e#10520#12324#0" expanded="false" />
-            <element signature="e#12349#12623#0" expanded="false" />
-            <element signature="e#12664#12938#0" expanded="false" />
-            <element signature="e#12985#13370#0" expanded="false" />
-            <element signature="e#13410#13682#0" expanded="false" />
-            <element signature="e#13727#14009#0" expanded="false" />
-            <element signature="e#14048#14318#0" expanded="false" />
-            <element signature="e#14345#15208#0" expanded="false" />
-            <element signature="n#style#0;n#!!top" expanded="false" />
-            <element signature="e#15422#15605#0" expanded="false" />
-            <element signature="e#15636#16069#0" expanded="false" />
-            <element signature="e#15870#16069#0" expanded="false" />
-            <element signature="e#16088#16279#0" expanded="false" />
-            <element signature="e#16567#16732#0" expanded="false" />
-            <element signature="n#style#1;n#!!top" expanded="false" />
-            <element signature="n#style#2;n#!!top" expanded="false" />
-            <element signature="e#17732#19136#0" expanded="false" />
-            <element signature="e#19189#19401#0" expanded="false" />
-            <element signature="e#19438#19491#0" expanded="false" />
-            <element signature="e#19532#19601#0" expanded="false" />
-            <element signature="e#19554#19601#0" expanded="false" />
-            <element signature="e#19623#19677#0" expanded="false" />
-            <element signature="e#19701#20121#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../prerecharge.js" />
+    <entry file="file://$PROJECT_DIR$/../后台main.html" />
+    <entry file="file://$PROJECT_DIR$/../统计分支-main.vue" />
     <entry file="file://$PROJECT_DIR$/布局/Css实现右边自适应布局的五种方法.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1404">
-          <caret line="90" column="17" lean-forward="false" selection-start-line="90" selection-start-column="17" selection-end-line="90" selection-end-column="17" />
+        <state relative-caret-position="257">
+          <caret line="103" column="0" lean-forward="true" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
           <folding>
             <element signature="e#338#431#0" expanded="false" />
             <element signature="e#451#501#0" expanded="false" />
@@ -571,6 +458,14 @@
             <element signature="n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#4;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/javascript 知识点/Javascript将图片的绝对路径转换为base64编码.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="27">
+          <caret line="13" column="5" lean-forward="true" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
