@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+使用场景：有时候服务器端给的你一张图片地址 你点击提交的时候 需要把它转换为base64编码 保存提交过去 就很有用了
+
+注意事项：
+1. 请使用png或者jpg的图片
+2. 图片已经跨域时 请加上这句代码 image.crossOrigin = ''; 在chrome下和firefox下可以
+3. 这是针对移动端的 不要使用IE等浏览器
+<script>
+    function getBase64Image(img) {
+        var canvas = document.createElement("canvas");
+        canvas.width = img.width;
+        canvas.height = img.height;
+        var ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0, img.width, img.height);
+        var ext = img.src.substring(img.src.lastIndexOf(".") + 1).toLowerCase();
+        var dataURL = canvas.toDataURL("image/" + ext);
+        return dataURL;
+    }
+    var img = "https://file.iviewui.com/dist/e1cf12c07bf6458992569e67927d767e.png";
+    var image = new Image();
+    image.crossOrigin = ''; // 解决图片跨域问题
+    image.src = img;
+    image.onload = function(){
+        var base64 = getBase64Image(image);
+        console.log('base64:', base64);
+    }
+</script>
+</body>
+</html>
