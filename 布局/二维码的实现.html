@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>二维码的生成</title>
+
+
+    <script type='text/javascript' src='http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js'></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+</head>
+<body>
+
+    <div id="qrcode"></div>
+
+    <div id="mobile-code"></div>
+
+    <script>
+      $('#qrcode').qrcode({
+        render:'canvas', // table
+        width: 64,
+        height: 64,
+        correctLevel: 0, // 容错级别，默认为2，最高为3，为了让用户扫码最快，容错级别应当设为最低
+        text: "http://blog.csdn.net/mr_smile2014"
+        // mode: 'Numeric', // 如果text是纯数字，这里要改下模式
+      });
+
+      // 移动端浏览器
+      $('#mobile-code').qrcode({
+        width: 100,
+        height: 100,
+        correctLevel: 0,
+        text: "http://blog.csdn.net/mr_smile2014"
+      });
+    </script>
+
+    <!--
+       render的两种方式：canvas方式、table方式。
+
+       主要区别：
+       canvas是生成的实际是一张图片，而table方式生成的则是由html的<table>标签通过控制细密的单元格背景色的黑白来组成的二维码，一个点就是一个单元格。
+       canvas方式生成的可直接以图片格式保存，而table的不能。
+       canvas的容易放大失真，table的不易失真。
+
+
+       注意：ie8及以下不支持canvas，但是table支持各种浏览器。
+
+
+       常见问题：
+       1.在chorme浏览器中二维码生成成功后无法扫描解决方法：
+
+       // 改成使用table的渲染方式，亲测支持各种各版本的浏览器
+       $('#qrcode').qrcode({
+            width: 200,
+            height: 200,
+            correctLevel:0,
+            render: "table", // table支持各种浏览器
+            text: "http://blog.csdn.net/mr_smile2014"
+       });
+
+       2.在微信或手机浏览器中生成的二维码无法扫描解决方法:
+
+       // 改成使用默认的渲染方式，支持微信和QQ内置浏览器及其它手机浏览器（不用render参数）
+       $('#qrcode').qrcode({
+            width: 200,
+            height: 200,
+            correctLevel:0,
+            text: "http://blog.csdn.net/mr_smile2014"
+        });
+
+    -->
+</body>
+</html>

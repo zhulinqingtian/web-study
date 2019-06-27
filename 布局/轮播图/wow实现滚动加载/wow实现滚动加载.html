@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>WOW.js在页面滚动时展现动感的元素动画效果</title>
+    <link rel="stylesheet" href="animate.css">
+    <script src="wow.js"></script>
+
+    <style>
+        p{
+            text-align: center;
+        }
+        .wow.w100{
+            width: 100%;
+            height:500px;
+            margin: 20px auto;
+            background-color: lightcoral;
+        }
+        .dowebok .row{
+            text-align: center;
+        }
+        .dowebok .wow {
+            display: inline-block;
+            width: 280px;
+            height: 280px;
+            margin: 30px 15px 0;
+            border-radius: 50%;
+            font: 30px/280px "Microsoft Yahei";
+            vertical-align: top;
+            text-align: center;
+            zoom: 1;
+        }
+        .bg-blue {
+            background: #1daee9;
+        }
+        .bg-green {
+            background: #5bd5a0;
+        }
+        .bg-purple {
+            background: #c843a5;
+        }
+        .bg-yellow {
+            background: #ffcc35;
+        }
+        .bg-red {
+            background: #eb3980;
+        }
+
+        .visible-true{
+            visibility: visible;
+        }
+        .visible-false{
+            visibility: hidden;
+        }
+        .animation-delay-1{
+            animation-delay: 0.5s;
+        }
+        .animation-delay-2{
+            animation-delay: 1.5s;
+        }
+        .animation-none{
+            animation-name: none;
+        }
+        @keyframes rollIn {
+            0% {
+                opacity: 0;
+                -webkit-transform: translate3d(-100%,0,0) rotate(-120deg);
+                transform: translate3d(-100%,0,0) rotate(-120deg);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <p> 插件描述：WOW.js 是一款帮助你实现滚动页面时触发CSS 动画效果的插件 </p>
+
+    <div class="dowebok">
+        <div class="row">
+            <div class="wow rollIn bg-blue visible-true" style="animation-name: rollIn;"></div>
+            <div class="wow bounceInDown bg-green visible-true" style="animation-name: bounceInDown;">WOW.js</div>
+            <div class="wow lightSpeedIn bg-purple visible-true" style="animation-name: lightSpeedIn;"></div>
+        </div>
+
+        <div class="row">
+            <div class="wow rollIn animation-delay-1 bg-yellow visible-true" data-wow-delay="0.5s" style="animation-name: rollIn;">简单易用</div>
+            <div class="wow pulse bg-red visible-true" data-wow-iteration="5" data-wow-duration="0.15s" style="animation-duration: 0.15s; animation-iteration-count: 5; animation-name: pulse;"></div>
+            <div class="wow bounceInRight bg-blue visible-true" style="animation-name: bounceInRight;">轻量级</div>
+        </div>
+
+        <div class="row">
+            <div class="wow bounceInLeft bg-green visible-false animation-none"></div>
+            <div class="wow flipInX bg-purple visible-false animation-none">WOW.js</div>
+            <div class="wow bounceInRight bg-yellow visible-false animation-none"></div>
+        </div>
+
+        <div class="row">
+            <div class="wow rollIn bg-blue visible-false animation-none">无需 jQuery</div>
+            <div class="wow shake bg-red visible-false animation-none" data-wow-iteration="5" data-wow-duration="0.15s" style="animation-duration: 0.15s; animation-iteration-count: 5;"></div>
+            <div class="wow swing bg-purple visible-false animation-none" data-wow-iteration="2" style="animation-iteration-count: 2;">纯 JS</div>
+        </div>
+
+        <div class="row">
+            <div class="wow rollIn bg-red visible-false animation-none"></div>
+            <div class="wow bounceInU animation-delay-1 bg-yellow visible-false animation-none" data-wow-delay="0.5s">WOW.js</div>
+            <div class="wow lightSpeedIn animation-delay-1 bg-green visible-false animation-none" data-wow-delay="0.5s" data-wow-duration="0.15s" style="animation-duration: 0.15s;"></div>
+        </div>
+
+        <div class="row">
+            <div class="wow bounceInLeft bg-purple visible-false ">依赖 animate.css</div>
+            <div class="wow pulse bg-blue visible-false animation-none" data-wow-iteration="5" data-wow-duration="0.25s" style="animation-duration: 0.25s; animation-iteration-count: 5;"></div>
+            <div class="wow lightSpeedIn bg-yellow visible-false animation-none">多种动画</div>
+        </div>
+
+        <div class="row">
+            <div class="wow bounce bg-green visible-false animation-none" data-wow-iteration="5" data-wow-duration="0.15s" style="animation-duration: 0.15s; animation-iteration-count: 5;"></div>
+            <div class="wow bounceInUp bg-red visible-false animation-none">WOW.js</div>
+            <div class="wow bounceInRight bg-purple visible-false animation-none"></div>
+        </div>
+
+        <div class="row">
+            <div class="wow rollIn animation-delay-1 bg-red visible-false animation-none" data-wow-delay="0.5s">无需 jQuery！？</div>
+            <div class="wow bounceInDown animation-delay-1 bg-green visible-false animation-none" data-wow-delay="1s"></div>
+            <div class="wow bounceInRight animation-delay-2 bg-yellow visible-false animation-none" data-wow-delay="1.5s">谢谢</div>
+        </div>
+    </div>
+    <div
+        class="wow slideInLeft w100"
+        data-wow-duration="2s"
+        data-wow-delay="0.5s"
+        data-wow-offset="10"
+        data-wow-iteration="1"
+    ></div>
+
+    <div
+        class="wow slideInRight w100"
+        data-wow-duration="2s"
+        data-wow-delay="0.5s"
+        data-wow-offset="10"
+        data-wow-iteration="1"
+    ></div>
+
+    <script>
+      new WOW({
+        boxClass: 'wow', // 默认
+        animateClass: 'animated', // 默认
+        offset: 0, // 默认
+        mobile: true, // 默认
+        live: true // 默认
+      }).init();
+    </script>
+
+<!--
+高级选项:
+    data-wow-duration：更改动画持续时间
+    data-wow-delay：动画开始前的延迟
+    data-wow-offset：开始动画的距离（与浏览器底部相关）
+    data-wow-iteration：动画的次数重复
+
+自定义设置:
+    boxClass：用户滚动时显示隐藏框的类名。
+
+    animateClass：触发CSS动画的类名（animate.css库默认为'animated'）
+
+    offset：定义浏览器视口底部与隐藏框顶部之间的距离。当用户滚动并到达该距离时，隐藏的框被显示出来。(距离可视区域多少开始执行动画)
+
+    mobile：是否在移动设备上执行动画
+
+    live：在页面上不断检查新的WOW元素。(异步加载的内容是否有效)
+-->
+</body>
+</html>
