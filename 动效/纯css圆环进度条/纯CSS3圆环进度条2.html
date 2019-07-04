@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+	<style type="text/css">
+		* { margin: 0;padding: 0; }
+		
+		.box { position: relative;margin: 100px auto;width: 100px;height: 100px; }
+		.left { position: absolute;top: 0;left: 0;width: 100px;height: 100px;border-radius: 50%;clip: rect(0 50px 100px 0); }
+		.left::after { content: '';position: absolute;top: 0;left: 0;width: 100px;height: 100px;background: red;border-radius: 50%;clip: rect(0 100px 100px 50px); }
+		.right { position: absolute;top: 0;left: 0;width: 100px;height: 100px;border-radius: 50%;clip: rect(0 100px 100px 50px); }
+		.right::after { content: '';position: absolute;top: 0;left: 0;width: 100px;height: 100px;background: red;border-radius: 50%;clip: rect(0 50px 100px 0); }
+		.progress { position: absolute;top: 50%;left: 50%;margin-top: -40px;margin-left: -40px;width: 80px;height: 80px;background: white;border-radius: 50%; }
+		
+		@keyframes rotateLeft1 {
+			0% { transform: rotate(0deg); }
+			25% { transform: rotate(0deg); }
+			50% { transform: rotate(180deg); }
+			75% { transform: rotate(180deg); }
+			100% { transform: rotate(360deg); }
+		}
+		
+		@keyframes rotateRight1 {
+			0% { transform: rotate(0deg); }
+			25% { transform: rotate(180deg); }			
+			50% { transform: rotate(180deg); }
+			75% { transform: rotate(360deg); }
+			100% { transform: rotate(360deg); }
+		}
+		
+		@keyframes rotateLeft2 {
+			0% { transform: rotate(0deg); }
+			33% { transform: rotate(0deg); }
+			66% { transform: rotate(180deg); }
+			100% { transform: rotate(180deg); }
+		}
+		
+		@keyframes rotateRight2 {
+			0% { transform: rotate(0deg); }
+			33% { transform: rotate(180deg); }
+			66% { transform: rotate(180deg); }
+			100% { transform: rotate(180deg); }
+		}
+		
+		@keyframes scaleBox2 {
+			0% { transform: scale(1);opacity: 1; }
+			33% { transform: scale(1);opacity: 1; }
+			66% { transform: scale(1);opacity: 1; }
+			100% { transform: scale(1.5);opacity: 0; }
+		}
+		
+		.box1 .left::after { animation: rotateLeft1 1.2s linear infinite; }
+		.box1 .right::after { animation: rotateRight1 1.2s linear infinite; }
+		
+		.box2 .left::after { animation: rotateLeft2 .9s linear infinite; }
+		.box2 .right::after { animation: rotateRight2 .9s linear infinite; }
+		.box2 { animation: scaleBox2 .9s linear infinite; }
+		
+	</style>
+</head>
+<body>
+	
+	<div class="box box1">
+		<div class="left"></div>
+		<div class="right"></div>
+		<div class="progress"></div>
+	</div>
+	
+	<div class="box box2">
+		<div class="left"></div>
+		<div class="right"></div>
+		<div class="progress"></div>
+	</div>
+	
+</body>
+</html>
