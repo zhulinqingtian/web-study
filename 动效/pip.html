@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        video { max-width:100%; }
+    </style>
+</head>
+<body>
+    <video id="video" src="https://www.runoob.com/try/demo_source/movie.ogg" controls playsinline loop></video>
+
+    <input type="button" id="pipBtn" value="点击进入画中画状态">
+</body>
+
+<script>
+  var pipWindow;
+  var pipBtn = document.getElementById('pipBtn');
+  var video = document.getElementById('video');
+
+  pipBtn.addEventListener('click', function(event) {
+    console.log('切换Picture-in-Picture模式...');
+    // 禁用按钮，防止二次点击
+    this.disabled = true;
+    try {
+      if (video !== document.pictureInPictureElement) {
+        // 尝试进入画中画模式
+        video.requestPictureInPicture();
+      } else {
+        // 退出画中画
+        document.exitPictureInPicture();
+      }
+    } catch(error) {
+      console.log('出错了！' + error);
+    } finally {
+      this.disabled = false;
+    }
+  });
+
+  // 点击切换按钮可以触发画中画模式，
+  // 在有些浏览器中，右键也可以切换，甚至可以自动进入画中画模式
+  // 因此，一些与状态相关处理需要在专门的监听事件API中执行
+  video.addEventListener('enterpictureinpicture', function(event) {
+    console.log('视频已进入Picture-in-Picture模式');
+    pipBtn.value = pipBtn.value.replace('进入', '退出');
+
+    pipWindow = event.pictureInPictureWindow;
+    console.log('视频窗体尺寸为：'+ pipWindow.width +' x ' + pipWindow.height);
+
+    // 添加resize事件，一切都是为了测试API
+    pipWindow.addEventListener('resize', onPipWindowResize);
+  });
+
+  // 退出画中画模式时候
+  video.addEventListener('leavepictureinpicture', function(event) {
+    console.log('视频已退出Picture-in-Picture模式');
+    pipBtn.value = pipBtn.value.replace('退出', '进入');
+    // 移除resize事件
+    pipWindow.removeEventListener('resize', onPipWindowResize);
+  });
+
+  // 视频窗口尺寸改变时候执行的事件
+  var onPipWindowResize = function (event) {
+    console.log('窗口尺寸改变为：'+ pipWindow.width +' x ' + pipWindow.height);
+  };
+
+  /* 特征检测 */
+  if ('pictureInPictureEnabled' in document == false) {
+    console.log('当前浏览器不支持视频画中画。');
+    togglePipButton.disabled = true;
+  }
+</script>
+
+<!--
+
+// 进入画中画
+video.requestPictureInPicture();
+
+// 退出画中画
+document.exitPictureInPicture();
+
+// 进入画中画模式时候执行
+video.addEventListener('enterpictureinpicture', function() {
+  // 已进入画中画模式
+});
+
+// 退出画中画模式时候执行
+video.addEventListener('leavepictureinpicture', function() {
+  // 已退出画中画模式
+});
+
+最后，还提供了一个PictureInPictureWindow对象，也就是画中画窗口对象，包含width，height和onresize这些属性，示意如下：
+
+{
+  height: 192,
+  onresize: null,
+  width: 341
+}
+
+-->
+</html>
