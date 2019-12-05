@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>双飞翼布局</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        #container {
+            width: 100%;
+            background-color: khaki;
+        }
+        .column {
+            float: left;
+        }
+        #center {
+            margin-left: 200px;
+            margin-right: 150px;
+            padding: 20px;
+            background-color: cadetblue;
+        }
+        #left {
+            width: 200px;
+            padding: 20px;
+            background-color: orange;
+            margin-left: -100%;
+        }
+        #right {
+            width: 150px;
+            padding: 20px;
+            background-color: hotpink;
+            margin-left: -150px;
+        }
+        #footer {clear: both; height: 50px; background-color: darkgray }
+        #header { width: 100%; height: 50px; background-color: darkgray }
+    </style>
+</head>
+<body>
+    <div id="header"></div>
+    <div id="container" class="column">
+        <div id="center">
+            春绿时节，百花盛开。
+
+            漫山桃花，红红脱脱。山脚下起直上蔓长，层层叠叠，红次渐淡渐粉深春各色，婉绿相间，像是自然绣出了一幅粉色主调的装帧画。
+
+            一山的鸟鸣声语，翅扬蓝云翻飞着峦岭南秀的春息，入谷填沟，香袭着丛山峻岭的南国桃园。弯曲的路漫，被粉蝶追逐，似一条长长的粉色围巾套在山岭，飘逸暖阳下一片片一簇簇桃源的遍香。
+
+            花开春绿，落艳阵阵。千丈量宣姿态绰约，山水相逢、春绿蔓延了头顶上飘浮的白云。
+
+            春绿看花开。承载着春花落素的希望，嘻笑着一帘桃源里的伴歌曼舞，烟雨蒙蒙中一染镇落的街道、人群、飞雁、烛光。
+
+            时光的钟声滋润了一粒春播的种子，寻找前世的一落红尘，在厚重的沟壑里赶着山川的桃花源香，凝望着古镇落泊的苍凉，演绎着一代代寒冬入春的诗行，把笑颜春花从腊月挂到春绿的屋檐。
+
+            一缕春意，一叶绽绿，春色的舞台。
+
+            一源桃红，一瓣粉妆，春绿看花开。
+        </div>
+    </div>
+    <div id="left" class="column">
+        西去落霞，一载灰瓦。沿骑墙的流水蓄成了海洋的寥廓，滑落了夕阳下断肠如血的悲凉。月影横斜，苦涩云彩。把断断续续的白天的日记撕碎成花瓣抛洒空间，落一地沧桑，铺一层冰霜。
+
+        细听花的悄悄落地，留下了一声声没有说出来的心事。远远的山寺里传来千古的钟鼓声，幽扬静谧，随青烟飘渺禅意绵绵，终是风干了落花时节的思念，吞噬了苍凉暮黑中丝丝虚幻。
+    </div>
+    <div id="right" class="column">
+        漆黑瓦幕，星河灰尘。从指尖滑落的夜梦，还隐隐约约的残留暮鼓的余音，缭绕着清晨花开的艳丽。不妨踮起脚尖去追逐着山背后的几点光亮再芳香墨黑的夜晚，继续写着遥远的诗行情缘，细听窗棂上暮鼓的落花。
+
+        时钟阵阵，滴嗒成流年。融化了几世荒漠的冬天，残月飘枝落叶归根。老树也能新长绿叶，新开鲜花，在迟暮钟声里悦耳着花开的呢喃细语。
+    </div>
+    <div id="footer"></div>
+
+    <!--
+        双飞翼布局的DOM结构与圣杯布局的区别是 用container仅包裹住center，另外将center的.column类移至container上。
+
+        最后计算最小页面宽度：由于双飞翼布局没有用到position:relative进行定位，所以最小页面宽度应该为200+150=350px。
+        但是当页面宽度缩小到350px附近时，会挤占中间栏的宽度，使得其内容被右侧栏覆盖
+    -->
+</body>
+</html>

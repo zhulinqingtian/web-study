@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>圣杯布局</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- 圣杯布局 start -->
+        <style>
+            #container {
+                padding-left: 200px;
+                padding-right: 150px;
+            }
+            #container .column { float: left; }
+            #center { width: 100%; padding: 20px; background-color: cornflowerblue}
+            #left {
+                width: 200px;
+                padding: 20px;
+                background-color: orange;
+                margin-left: -100%;
+                position: relative;
+                right: 200px;
+            }
+            #right {
+                width: 150px;
+                padding: 20px;
+                background-color: lightgoldenrodyellow;
+                margin-right: -150px;
+            }
+            #footer {clear: both; height: 50px; background-color: darkgray }
+            #header { width: 100%; height: 50px; background-color: darkgray }
+            body {
+                min-width: 550px; /* 200 + 150 + 200 */
+                /* 由于两侧都具有固定的宽度，所以需要给定页面一个最小的宽度，但这并不只是简单的200+150=350px。回想之前left使用了position: relative，
+                所以就意味着在center开始的区域，还存在着一个left的宽度。所以页面的最小宽度应该设置为200+150+200=550px */
+            }
+        </style>
+        <!-- 圣杯布局 stop -->
+    </head>
+    <body>
+        <!-- 圣杯布局 start -->
+        <div id="header"></div>
+        <div id="container">
+            <div id="center" class="column"></div>
+            <div id="left" class="column"></div>
+            <div id="right" class="column"></div>
+        </div>
+        <div id="footer"></div>
+        <!-- 圣杯布局 stop -->
+    </body>
+
+    <!--
+        圣杯布局 和 双飞翼布局 要点：
+
+        两侧宽度固定，中间宽度自适应
+        中间部分在DOM结构上优先，以便先行渲染
+        允许三列中的任意一列成为最高列
+        只需要使用一个额外的<div>标签
+    -->
+</html>

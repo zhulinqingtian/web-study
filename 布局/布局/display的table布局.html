@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>display:table布局</title>
+    <style>
+        body{
+            background-color: #f0f0f0;
+        }
+        #container{
+            width: 1200px;
+            margin: 0 auto;
+        }
+        *{
+            box-sizing: border-box;
+        }
+        .demo{
+            width: 1200px;
+            margin: 16px auto;
+            padding: 16px;
+            background-color: #fff;
+            border: 1px solid #d8d8d8;
+            box-shadow: 1px 1px 13px 2px rgba(0,0,0,0.2);
+        }
+        .demo .main{
+            min-height: 100px;
+            width: 1200px;
+        }
+    </style>
+
+    <style>
+        .demo-01 .main .parent{
+            width: 1200px;
+            height:100px;
+            border:1px solid #ccc;
+
+            display: table-cell;
+            text-align: center;
+            vertical-align: middle;
+        }
+        .demo-01 .main .parent .child-center {
+            width: 2%;
+            height:10%;
+            border-radius: 10px;
+            background-color: orangered;
+
+            display: inline-block;
+            vertical-align: middle;
+        }
+    </style>
+
+    <style>
+        .demo-02 .content {
+            display: table-cell;
+            padding: 10px;
+            border: 2px solid #999;
+        }
+
+        .demo-02 .content div {
+            display: inline-block;
+            vertical-align: middle;
+        }
+    </style>
+
+    <style>
+        .demo-03 .content {
+            display: table;
+            padding: 10px;
+            border: 2px solid #999;
+        }
+
+        .demo-03 .left-box {
+            float: left;
+            margin-right: 10px;
+        }
+
+        .demo-03 .right-box {
+            display: table-cell;
+            padding: 10px;
+            width: 100%;
+            vertical-align: top;
+            border: 1px solid #ccc;
+        }
+    </style>
+
+    <style>
+        .demo-04 .content {
+            display: table;
+            padding: 10px;
+            border: 2px solid #999;
+        }
+
+        .demo-04 .box1 {
+            display: table-cell;
+            width: 100px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        .demo-04 .box2 {
+            display: table-cell;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+    </style>
+
+    <style>
+        .demo-05 .content {
+            padding: 10px;
+            margin: 10px auto;
+
+            border: 2px solid #999;
+        }
+
+        .demo-05 .content ul {
+            display: table;
+            width: 100%;
+            padding: 0;
+        }
+
+        .demo-05 .content ul li {
+            display: table-cell;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            border: 1px solid #ccc;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h2>display：table-cell的几种用法</h2>
+
+        <div class="demo demo-01">
+            <div class="main">
+                <div class="parent">
+                    <div class="child-center" title="我宽高不定，要水平垂直居中"></div>
+                </div>
+            </div>
+        </div>
+
+        <p>1.大小不固定元素的垂直居中</p>
+        <div class="demo demo-02">
+            <div class="content">
+                <div style="padding: 50px 40px;background: #cccccc;color: #fff;"></div>
+                <div style="padding: 60px 40px;background: #639146;color: #fff;"></div>
+                <div style="padding: 70px 40px;background: #2B82EE;color: #fff;"></div>
+                <div style="padding: 80px 40px;background: #F57900;color: #fff;"></div>
+                <div style="padding: 90px 40px;background: #BC1D49;color: #fff;"></div>
+                <div style="padding: 100px 40px;background: #cccccc;color: #fff;"></div>
+            </div>
+        </div>
+
+        <p>2.两列自适应布局</p>
+        <div class="demo demo-03">
+            <div class="content">
+                <div class="left-box">
+                    <img src="img/a1.jpg" width="70">
+                </div>
+                <div class="right-box">
+                    <p>父元素：display: table;</p>
+                    <p>子元素：固定宽高的部分浮动。自适应的部分display:table-cell;，宽度可设置为100%(尽可能宽的意思)</p>
+                </div>
+            </div>
+        </div>
+
+        <p>3.等高布局</p>
+        <div class="demo demo-04">
+            <div class="content">
+                <div class="box1">我和右边等高</div>
+                <div class="box2">
+                    <p>table表格中的单元格最大的特点之一就是同一行元素都等高。所以，很多时候我们需要等高布局的时候，就可以借助display:table-cell属性。</p>
+                    <p>父元素：display:table; 子元素均: display:table-cell;</p>
+                </div>
+            </div>
+        </div>
+
+        <p>4.列表布局</p>
+        <p>比起float实现的优势：（1）不需要清除浮动 （2）支持不定高列表</p>
+        <div class="demo demo-05">
+            <div class="content">
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

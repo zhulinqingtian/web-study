@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使元素居中的方法</title>
+    <style>
+        body{
+            background-color: #f0f0f0;
+        }
+        #container{
+            width: 1200px;
+            margin: 0 auto;
+        }
+        *{
+            box-sizing: border-box;
+        }
+        .demo{
+            width: 1200px;
+            margin: 16px auto;
+            padding: 16px;
+            background-color: #fff;
+            border: 1px solid #d8d8d8;
+            box-shadow: 1px 1px 13px 2px rgba(0,0,0,0.2);
+        }
+        .demo .main{
+            min-height: 100px;
+            width: 1200px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <p>1.使用 CSS3transform让元素居中</p>
+        <style>
+            .demo-06 .parent{
+                position: relative;
+                height:100px;
+            }
+            .demo-06 .child-center{
+                width: 10%;
+                height:10%;
+
+                background-color: red;
+                transform: translate(-50%,-50%);
+                position: absolute;top: 50%;left: 50%;
+            }
+        </style>
+        <div class="demo demo-01">
+            <div class="parent">
+                <div class="child-center" title="我宽高不定，要水平垂直居中"></div>
+            </div>
+        </div>
+
+        <div class="demo demo-02">
+            <p>使用display:table; disply:table-cell;方法</p>
+        </div>
+    </div>
+</body>
+</html>
